@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.Multiplication.AccessData", "Matrix.Multiplication.AccessData\Matrix.Multiplication.AccessData.csproj", "{BC0BAB99-5D85-44F9-BDA0-FD3EAE902B3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matrix.Multiplication.AccessData", "Matrix.Multiplication.AccessData\Matrix.Multiplication.AccessData.csproj", "{BC0BAB99-5D85-44F9-BDA0-FD3EAE902B3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.Multiplication.DTOObjects", "Matrix.Multiplication.DTOObjects\Matrix.Multiplication.DTOObjects.csproj", "{C4780939-EF2A-4802-9F82-4D3B22B638A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matrix.Multiplication.DTOObjects", "Matrix.Multiplication.DTOObjects\Matrix.Multiplication.DTOObjects.csproj", "{C4780939-EF2A-4802-9F82-4D3B22B638A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.Multiplication.Api", "Matrix.Multiplication.Api\Matrix.Multiplication.Api.csproj", "{5ED3C639-E0DF-45E6-9606-DDD5A5F1BD1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C4780939-EF2A-4802-9F82-4D3B22B638A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4780939-EF2A-4802-9F82-4D3B22B638A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4780939-EF2A-4802-9F82-4D3B22B638A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED3C639-E0DF-45E6-9606-DDD5A5F1BD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED3C639-E0DF-45E6-9606-DDD5A5F1BD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED3C639-E0DF-45E6-9606-DDD5A5F1BD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED3C639-E0DF-45E6-9606-DDD5A5F1BD1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

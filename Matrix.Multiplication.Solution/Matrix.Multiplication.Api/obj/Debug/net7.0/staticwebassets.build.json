@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jLZG3ptPYNm8JvVoIq6IRBT5NCf9FJOSaPNIMS82v5A=",
+  "Source": "Matrix.Multiplication.Api",
+  "BasePath": "_content/Matrix.Multiplication.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

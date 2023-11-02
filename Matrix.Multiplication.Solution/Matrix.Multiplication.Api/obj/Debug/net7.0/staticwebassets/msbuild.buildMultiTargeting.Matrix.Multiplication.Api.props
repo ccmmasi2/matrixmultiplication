@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Matrix.Multiplication.Api.props" />
+</Project>

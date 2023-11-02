@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj": {}
+    "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj": {}
   },
   "projects": {
-    "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj": {
+    "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj",
+        "projectUniqueName": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj",
         "projectName": "Matrix.Multiplication.DTOObjects",
-        "projectPath": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj",
+        "projectPath": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj",
         "packagesPath": "C:\\Users\\cristian.montenegro\\.nuget\\packages\\",
-        "outputPath": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\obj\\",
+        "outputPath": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

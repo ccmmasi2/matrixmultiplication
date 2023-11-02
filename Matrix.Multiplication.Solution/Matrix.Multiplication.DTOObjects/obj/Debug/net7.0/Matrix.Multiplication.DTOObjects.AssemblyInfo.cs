@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Matrix.Multiplication.DTOObjects")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3035f9c498bd7491925259e45313645f6f5e9af")]
 [assembly: System.Reflection.AssemblyProductAttribute("Matrix.Multiplication.DTOObjects")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Matrix.Multiplication.DTOObjects")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

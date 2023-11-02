@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zKnYhBSTcUWN2mIr4F4DvJUBQwkIOfUQnlwiR3+zrf66GfBaEaDA1ZcUzy0i5F+tqfEsRnPJTirC8gluB6gs+g==",
+  "dgSpecHash": "m8Xvh7xzYeBwqutVfFtvGL9DzlPQF1XJCENy7Tf5TubcgUeqxS571j7o3ghIArBVNq+fEMN02VfY7yltvC/ZMA==",
   "success": true,
-  "projectFilePath": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj",
+  "projectFilePath": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -2870,11 +2870,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.AccessData\\Matrix.Multiplication.AccessData.csproj",
+      "projectUniqueName": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.AccessData\\Matrix.Multiplication.AccessData.csproj",
       "projectName": "Matrix.Multiplication.AccessData",
-      "projectPath": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.AccessData\\Matrix.Multiplication.AccessData.csproj",
+      "projectPath": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.AccessData\\Matrix.Multiplication.AccessData.csproj",
       "packagesPath": "C:\\Users\\cristian.montenegro\\.nuget\\packages\\",
-      "outputPath": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.AccessData\\obj\\",
+      "outputPath": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.AccessData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -2898,8 +2898,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj": {
-              "projectPath": "C:\\Repositorio\\Estudio\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj"
+            "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj": {
+              "projectPath": "C:\\Repositorio\\IGC\\matrixmultiplication\\Matrix.Multiplication.Solution\\Matrix.Multiplication.DTOObjects\\Matrix.Multiplication.DTOObjects.csproj"
             }
           }
         }

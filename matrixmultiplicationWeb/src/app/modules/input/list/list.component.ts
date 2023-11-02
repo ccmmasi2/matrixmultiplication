@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.inputListOptions);
-    // this.loadinputListOptions();
+    this.loadinputListOptions();
   }
 
   loadinputListOptions(): void {

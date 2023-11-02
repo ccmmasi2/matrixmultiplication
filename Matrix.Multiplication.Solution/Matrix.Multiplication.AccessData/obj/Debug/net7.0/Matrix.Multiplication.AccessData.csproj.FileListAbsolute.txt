@@ -1,0 +1,17 @@
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\bin\Debug\net7.0\Matrix.Multiplication.AccessData.deps.json
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\bin\Debug\net7.0\Matrix.Multiplication.AccessData.runtimeconfig.json
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\bin\Debug\net7.0\Matrix.Multiplication.AccessData.dll
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\bin\Debug\net7.0\Matrix.Multiplication.AccessData.pdb
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\bin\Debug\net7.0\Matrix.Multiplication.DTOObjects.dll
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\bin\Debug\net7.0\Matrix.Multiplication.DTOObjects.pdb
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.csproj.AssemblyReference.cache
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.AssemblyInfoInputs.cache
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.AssemblyInfo.cs
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.csproj.CoreCompileInputs.cache
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.csproj.CopyComplete
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.dll
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\refint\Matrix.Multiplication.AccessData.dll
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.pdb
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\Matrix.Multiplication.AccessData.genruntimeconfig.cache
+C:\Repositorio\Estudio\Matrix.Multiplication.Solution\Matrix.Multiplication.AccessData\obj\Debug\net7.0\ref\Matrix.Multiplication.AccessData.dll

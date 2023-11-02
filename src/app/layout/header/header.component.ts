@@ -15,9 +15,11 @@ export class HeaderComponent {
     const selectedValue = event.target.value;
 
     if (selectedValue === '1') {
-      this.router.navigate(['/entrada']);
+      this.router.navigate(['']);
     } else if (selectedValue === '2') {
-      this.router.navigate(['/salida']);
+      this.router.navigate(['/input/list']);
+    } else if (selectedValue === '3') {
+      this.router.navigate(['/home']);
     }
   }
 }

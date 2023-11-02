@@ -1,0 +1,17 @@
+<nav>
+    <ng-container *ngFor="let crumb of crumbsPrincipal">
+      <label
+        class="text-principal"
+        [routerLink]="crumb['value']"
+        (click)="invokeClickEvent()"
+        >{{ crumb["key"] }}</label
+      >
+      <span> / </span>
+    </ng-container>
+    <ng-container *ngFor="let crumb of crumbsSecundary">
+      <label class="text-secundary" [routerLink]="crumb['value']">{{
+        crumb["key"]
+      }}</label>
+    </ng-container>
+  </nav>
+  

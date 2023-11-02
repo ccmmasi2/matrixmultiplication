@@ -1,12 +1,31 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { ListComponent } from './list/list.component';
+import { CreateComponent } from './create/create.component';
 
-
+const routes: Routes = [
+  {
+    path: 'input',
+    children: [
+      {
+        path: 'list',
+        component: ListComponent,
+      },
+      {
+        path: 'create',
+        component: CreateComponent,
+        data: { processId: null },
+      },
+      {
+        path: 'create/:processId',
+        component: CreateComponent,
+      },
+    ],
+  },
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class InputRoutingModule { }

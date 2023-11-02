@@ -1,0 +1,22 @@
+<header>
+    <nav class="navbar">
+      <a class="navbar-brand" href="#">
+        Multiplicación de matrices
+      </a>
+      <button
+        mat-button
+        [routerLink]="['/input/list']"
+        routerLinkActive="router-link-active"
+      >
+        <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
+        <label class="label">Inicio</label>
+      </button>
+      <div class="select-container">
+        <select (change)="onOptionChange($event)">
+          <option value="1">Entrada</option>
+          <option value="2">Salida</option>
+        </select>
+      </div>
+    </nav>
+  </header> 
+  

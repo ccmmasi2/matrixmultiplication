@@ -1,1 +1,112 @@
-<p>list works!</p>
+<!-- <div *ngIf="alertMessageShow" class="floating-alert">
+  <ngb-alert type="{{ alertMessageTypeShow }}" [dismissible]="true">{{
+    alertMessageShow
+  }}</ngb-alert>
+</div> -->
+<div class="mat-app-background basic-container">
+    <div class="contain-main">
+      <div class="contain-head">
+        <div class="contain-title">Entrada</div>
+        <div class="breadcrumbs">
+          <!-- <app-bread-crumb
+            [textPrincipal]="'Tablero Principal,/home'"
+            [textSecundary]="'Gestión de consorcios'"
+          ></app-bread-crumb> -->
+        </div> 
+      </div>
+      <!-- <div class="contain-body">
+        <div class="contain-filter">
+          <div class="input-img">
+            <input
+              class="mat-field-filter"
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Buscar" />
+          </div>
+          <div class="btn-add">
+            <button
+              (click)="redirectCreate()"
+              class="button button-default-primary">
+              nuevo
+            </button>
+          </div>
+        </div>
+        <div class="contain-table">
+          <table mat-table matSort [dataSource]="dataSource">
+            <ng-container matColumnDef="Id">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                {{ resource.columnId }}
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.codeId }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="name">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                {{ resource.columnName }}
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="erpCode">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                {{ resource.columnErpCode }}
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.erpCode }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="numberGamePoint">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                {{ resource.columnGamePoint }}
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.numberGamePoints }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="status">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                {{ resource.columnStatus }}
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.statusMessage }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let element" class="centered-cell">
+                <img (click)="openActionsDialog($event, element)" class="buttonActions" src="../../../../../../assets/img/btn-actions.png" alt="Acciones" />
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">{{ resource.msgNoResult }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="contain-paginate">
+          <mat-paginator
+            #paginator
+            class=""
+            [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            [pageIndex]="pageIndex"
+            aria-label="Select page"
+          >
+          </mat-paginator>
+        </div>
+      </div> -->
+      <!-- <div class="contain-footer">
+        <button (click)="redirectBack()" class="button button-default-secundary">
+          Volver
+        </button>
+      </div> -->
+    </div>
+  </div>
+  

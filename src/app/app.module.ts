@@ -8,6 +8,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MainpageComponent } from './layout/mainpage/mainpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MaterialModule } from './material/material/material.module';
     AppRoutingModule,
     InputModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

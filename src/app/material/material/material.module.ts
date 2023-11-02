@@ -40,8 +40,8 @@ import { MatMenuModule } from '@angular/material/menu';
     // MatToolbarModule,
     // MatTabsModule,
     // MatPaginatorModule,
-    // MatTableModule,
-    // MatSortModule,
+    MatTableModule,
+    MatSortModule,
     // MatMenuModule,
   ],
 })

@@ -5,6 +5,7 @@ import { CreateComponent } from './create/create.component';
 import { InputRoutingModule } from './input-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbModule } from '@app/shared/components/bread-crumb/breadcrumb.module';
+import { MaterialModule } from '@app/material/material/material.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BreadcrumbModule } from '@app/shared/components/bread-crumb/breadcrumb.
     CommonModule,
     InputRoutingModule,
     ReactiveFormsModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    MaterialModule,
   ]
 })
 export class InputModule { }

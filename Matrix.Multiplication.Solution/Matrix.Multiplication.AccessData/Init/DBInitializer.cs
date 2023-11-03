@@ -45,8 +45,8 @@ namespace Matrix.Multiplication.AccessData.Init
             if (!_db.ProcessMatrixDetail.Any())
             {
                 var LProcessMatrixDetailDataJson = File.ReadAllText("../Matrix.Multiplication.AccessData/Data/SeedData/ProcessMatrixDetail.json");
-                var LProcessMatrixDetail = JsonSerializer.Deserialize<List<ProcessMatrix>>(LProcessMatrixDetailDataJson);
-                _db.ProcessMatrix.AddRange(LProcessMatrixDetail);
+                var LProcessMatrixDetail = JsonSerializer.Deserialize<List<ProcessMatrixDetail>>(LProcessMatrixDetailDataJson);
+                _db.ProcessMatrixDetail.AddRange(LProcessMatrixDetail);
             }
 
             if (_db.ChangeTracker.HasChanges())

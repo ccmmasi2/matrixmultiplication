@@ -1,5 +1,4 @@
 [
-  //Table A Register 1 3x3
   {
     "IDProcessMatrix": 1,
     "Row": 1,
@@ -54,7 +53,6 @@
     "Column": 3,
     "Value": 9
   },
-  //Table B Process 1 3x3
   {
     "IDProcessMatrix": 2,
     "Row": 1,
@@ -109,7 +107,6 @@
     "Column": 3,
     "Value": 1
   },
-  //Table A Process 2 5x3
   {
     "IDProcessMatrix": 3,
     "Row": 1,
@@ -200,7 +197,6 @@
     "Column": 3,
     "Value": 15
   },
-  //Table B Process 2 3x4
   {
     "IDProcessMatrix": 4,
     "Row": 1,
@@ -273,7 +269,6 @@
     "Column": 4,
     "Value": 1
   },
-  //Table A Process 3 5x3
   {
     "IDProcessMatrix": 5,
     "Row": 1,
@@ -364,7 +359,6 @@
     "Column": 3,
     "Value": 15
   },
-  //Table B Process 3 2x2
   {
     "IDProcessMatrix": 6,
     "Row": 1,

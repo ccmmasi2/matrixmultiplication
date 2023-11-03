@@ -18,7 +18,7 @@ namespace Matrix.Multiplication.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("GetInputList")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<object>>> GetAll()
         {

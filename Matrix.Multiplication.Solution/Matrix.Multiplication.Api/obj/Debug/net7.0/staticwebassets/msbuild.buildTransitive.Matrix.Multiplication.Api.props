@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Matrix.Multiplication.Api.props" />
-</Project>

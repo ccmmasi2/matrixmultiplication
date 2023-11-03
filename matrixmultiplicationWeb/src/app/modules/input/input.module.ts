@@ -4,8 +4,8 @@ import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { InputRoutingModule } from './input-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BreadcrumbModule } from '@app/shared/components/bread-crumb/breadcrumb.module';
 import { MaterialModule } from '@app/material/material/material.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,8 @@ import { MaterialModule } from '@app/material/material/material.module';
     CommonModule,
     InputRoutingModule,
     ReactiveFormsModule,
-    BreadcrumbModule,
     MaterialModule,
+    SharedModule
   ]
 })
 export class InputModule { }

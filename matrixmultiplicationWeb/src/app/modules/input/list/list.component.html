@@ -14,6 +14,7 @@
         ></app-bread-crumb>
       </div> 
     </div>
+    <div class="separator"></div>
     <div class="bodyContent">
       <div class="buttonContainer"> 
         <button
@@ -58,22 +59,22 @@
               <label for="">{{ item.status }}</label>
             </td> 
           </ng-container>
-          
-          <!-- <ng-container matColumnDef="Actions">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
-            <td mat-cell *matCellDef="let item">
-              <div>
-                <button mat-button (click)="addUserRolGamePoint(item)" *ngIf="item.isNewRow">Registrar</button>
-                <button mat-button (click)="ruleOut()" *ngIf="item.isNewRow">Descartar</button> 
-                <button mat-button (click)="deleteUserRolGamePoint(item.userRoleId, item.gamePointId)" *ngIf="!item.isNewRow">Eliminar</button>
+           
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element" class="centered-cell">
+              <div class="buttonActions fa fa-pencil" (click)="openActionsDialog($event, element)">
+                Acciones
               </div>
             </td>
-          </ng-container> -->
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
       </div> 
     </div>
+    <div class="separator"></div>
     <div class="contain-footer">
       <button class="button" (click)="redirectBack()">Volver</button>
     </div>

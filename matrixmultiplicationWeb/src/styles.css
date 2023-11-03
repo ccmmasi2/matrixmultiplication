@@ -155,3 +155,60 @@ header {
 
 /*footer*/
  
+
+/*head*/
+.contain-head {
+  text-align: justify;  
+  margin-top: 20px; 
+}
+
+.contain-title {
+  font-size: 24px;  
+  font-weight: bold;  
+  font-family: "Arial", sans-serif;  
+  margin-bottom: 10px; 
+}
+
+.breadcrumbs {
+  font-size: 18px; 
+  font-family: "Times New Roman", serif;  
+}
+/*head*/
+
+
+/*table*/
+  .custom-table {
+    width: 100%;
+    border: 1px solid #ccc;  
+    border-collapse: collapse;  
+  }
+
+  .custom-table th, .custom-table td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  .custom-table th {
+    background-color: #f2f2f2; 
+    border-bottom: 1px solid #ccc; 
+  }
+
+  .custom-table tr:nth-child(even) {
+    background-color: #f9f9f9;  
+  }
+
+/*table*/
+
+/*bodyContent*/
+
+.bodyContent {
+  margin-top: 50px; 
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: 10px;  
+}
+
+/*bodyContent*/

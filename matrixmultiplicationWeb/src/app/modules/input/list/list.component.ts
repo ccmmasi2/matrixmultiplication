@@ -29,19 +29,14 @@ export class ListComponent implements OnInit {
   }
 
   loadinputListOptions(): void {
-    this.route.params.subscribe((params) => {
-      const userId = +params['userId'];
-      if (!isNaN(userId)) {
-        this.apiService
-          .getListInputOptions()
-          .subscribe((info) => {
-            if (info) {
-              this.inputListOptions = info;
-              this.dataSource.data = this.inputListOptions;
-            }
-          });
-      }
-    });
+    this.apiService
+      .getListInputOptions()
+      .subscribe((info) => {
+        if (info) {
+          this.inputListOptions = info;
+          this.dataSource.data = this.inputListOptions;
+        }
+      });
   }
 
   redirectBack(): void {

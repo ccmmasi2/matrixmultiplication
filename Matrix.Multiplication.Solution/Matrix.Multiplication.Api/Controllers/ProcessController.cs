@@ -20,7 +20,7 @@ namespace Matrix.Multiplication.Api.Controllers
 
         [HttpGet("GetInputList")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<object>>> GetAll()
+        public async Task<ActionResult<IEnumerable<object>>> GetProcessAndMatrixInfo()
         {
             _logger.LogInformation("Get list");
             var LItems = await _repo.GetProcessAndMatrixInfo()

@@ -27,7 +27,7 @@
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
             <td mat-cell *matCellDef="let item">
-              <label for="" >{{ item.id }}</label>
+              <label for="" >{{ item.processId }}</label>
             </td>
           </ng-container>
           
@@ -41,14 +41,14 @@
           <ng-container matColumnDef="matrixA">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Matriz A</th>
             <td mat-cell *matCellDef="let item">
-              <label for="">{{ item.matrixA }}</label>
+              <label for="">{{ item.dimensionA }}</label>
             </td> 
           </ng-container>
           
           <ng-container matColumnDef="matrixB">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Matriz B</th>
             <td mat-cell *matCellDef="let item">
-              <label for="">{{ item.matrixB }}</label>
+              <label for="">{{ item.dimensionB }}</label>
             </td> 
           </ng-container>
           

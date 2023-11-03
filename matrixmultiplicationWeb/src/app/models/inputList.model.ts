@@ -1,8 +1,7 @@
 export class inputList {
-    id: number = 0;
-    date: Date = new Date();
-    matrixA: string = '';
-    matrixB: string = '';
-    status: string = '';
-    idStatus: number = 0;
-  }  
+  processId: number = 0;
+  date: Date = new Date();
+  status: boolean = false;
+  dimensionA: string = '';
+  dimensionB: string = '';
+}  

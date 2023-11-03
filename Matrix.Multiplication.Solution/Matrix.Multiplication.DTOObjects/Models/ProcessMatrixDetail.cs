@@ -9,7 +9,7 @@ namespace Matrix.Multiplication.DTOObjects.Models
         public int ID { get; set; }
 
 
-        public int? IDProcessMatrix { get; set; }
+        public int IDProcessMatrix { get; set; }
         [ForeignKey("IDProcessMatrix")]
         public ProcessMatrix ProcessMatrix { get; set; }
 

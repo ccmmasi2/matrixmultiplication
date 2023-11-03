@@ -15,20 +15,20 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
         }
         public IQueryable<object> GetProcessAndMatrixInfo()
         {
-            return _dbcontext.Process
-                .Join(
-                    _dbcontext.ProcessMatrix,
-                    process => process.ID,
-                    matrix => matrix.IDProcess,
-                    (process, matrix) => new
-                    {
-                        process.ID,
-                        process.Date,
-                        process.Status,
-                        matrix.MatrixName,
-                        matrix.Rows,
-                        matrix.Columns
-                    })
+            var query = from process in _dbcontext.Process
+                        join matrix in _dbcontext.ProcessMatrix 
+                        on process.ID equals matrix.IDProcess
+                        select new
+                        {
+                            process.ID,
+                            process.Date,
+                            process.Status,
+                            matrix.MatrixName,
+                            matrix.Rows,
+                            matrix.Columns
+                        };
+
+            return query
                 .AsQueryable();
         }
     }

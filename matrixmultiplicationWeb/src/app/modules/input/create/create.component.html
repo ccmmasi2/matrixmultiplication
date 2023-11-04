@@ -19,14 +19,16 @@
         <div class="infoMatrixB">
           <h2>Matrix B</h2>
           <div class="infoMatrix">
-            <div class="rowsInfo">
-              <input type="text" class="form-control" id="matrizBrows" placeholder="rows B">
-              <label for="matrizArows">rows Matriz B</label>
-            </div>
-            <div class="columnsInfo">
-              <input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" >
-              <label for="matrizBColumns">Columns Matriz B</label>
-            </div>
+            <form class="grid" [formGroup]="matrixAForm">
+              <div class="rowsInfo">
+                <input type="text" class="form-control" id="matrizBrows" placeholder="rows B" formControlName="rows">
+                <label for="matrizArows">rows Matriz B</label>
+              </div>
+              <div class="columnsInfo">
+                <input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" formControlName="columns">
+                <label for="matrizBColumns">Columns Matriz B</label>
+              </div>
+            </form>
           </div>
         </div>
       </div>

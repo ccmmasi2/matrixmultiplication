@@ -1,5 +1,6 @@
 ﻿using Matrix.Multiplication.AccessData.Data;
 using Matrix.Multiplication.AccessData.Repository.Interface;
+using Matrix.Multiplication.DTOObjects.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -66,6 +67,13 @@ namespace Matrix.Multiplication.AccessData.Repository.Implementation
             }
 
             return await query.FirstOrDefaultAsync();
+        }
+
+        public int InsertSink(T entity, Func<T, int> getId)
+        {
+            dbSet.Add(entity);
+            _dbcontext.SaveChanges();
+            return getId(entity);
         }
 
         public async Task Insert(T entity)

@@ -19,5 +19,6 @@ namespace Matrix.Multiplication.AccessData.Repository.Interface
         bool Remove(T entity);
         bool Update(T entity);
         Task SaveChanges();
+        int InsertSink(T entity, Func<T, int> getId);
     }
 }

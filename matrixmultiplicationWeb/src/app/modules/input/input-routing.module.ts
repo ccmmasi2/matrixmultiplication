@@ -17,7 +17,7 @@ const routes: Routes = [
         data: { processId: null },
       },
       {
-        path: 'create/:processId',
+        path: 'create/:id',
         component: CreateComponent,
       },
     ],

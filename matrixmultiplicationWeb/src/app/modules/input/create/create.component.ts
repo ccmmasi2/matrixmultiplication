@@ -12,7 +12,7 @@ import { Subject, switchMap } from 'rxjs';
 })
 
 export class CreateComponent implements OnInit {
-  public matrixForm!: FormGroup;
+  public matrixAForm!: FormGroup;
   process: InputCreate | undefined;
   formSubmitted: boolean = false;
   hasUnsavedChanges: boolean = false;
@@ -30,16 +30,14 @@ export class CreateComponent implements OnInit {
   }
 
   buildForm() {
-    this.matrixForm = this.formBuilder.group({
-      rowsMatrixA: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
-      columnsMatrixA: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
-      rowsMatrixB: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
-      columnsMatrixB: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
+    this.matrixAForm = this.formBuilder.group({
+      rows: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
+      columns: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
     });
   }
 
   get currentProcess(): InputCreate {
-    const process = this.matrixForm.value as InputCreate;
+    const process = this.matrixAForm.value as InputCreate;
     return process;
   }
 
@@ -49,7 +47,7 @@ export class CreateComponent implements OnInit {
   
   loadProcess(): void {
     this.activateRoute.params.subscribe((params) => {
-      const processId = +params['processId'];
+      const processId = +params['id'];
       if (!isNaN(processId)) {
         this.loadProcessData(processId);
       }
@@ -63,7 +61,8 @@ export class CreateComponent implements OnInit {
         if (!process) {
           this.router.navigate(['']);
         }
-        this.matrixForm.reset(process);
+        console.log(process?.matrix[0]);
+        this.matrixAForm.reset(process?.matrix[0]);
       });
   }
 
@@ -71,7 +70,7 @@ export class CreateComponent implements OnInit {
     event.preventDefault();
     this.formSubmitted = true;
 
-    if (this.matrixForm.valid) { 
+    if (this.matrixAForm.valid) { 
       if (!this.currentProcess.processId) {
           this.apiService.addProcess(this.currentProcess).subscribe(
             (process) =>  {
@@ -91,7 +90,7 @@ export class CreateComponent implements OnInit {
   }
 
   undoChanges() {
-    this.matrixForm.reset();
+    this.matrixAForm.reset();
   }
 
   detectUnsavedChanges() {

@@ -1,38 +1,33 @@
 <div class="basic-container">
     <div class="contain-main">
       <div class="contain-body">
-        <div class="col-12 sm:col-6">
-          <mat-card>
-            <mat-card-content>
-              <form class="grid" [formGroup]="matrixForm" (ngSubmit)="onSubmit($event)">
-                <div class="d-flex flex-row">
-
-                  <div class="matriz-inputs">
-                    <div class="form-floating mb-2 contenedorTextbox">
-                      <input type="text" class="form-control" id="matrizAFilas" placeholder="Filas A" formControlName="matrizAFilas">
-                      <label for="matrizAFilas">Filas Matriz A</label>
-                    </div>
-                    <div class="form-floating mb-2 contenedorTextbox">
-                      <input type="text" class="form-control" id="matrizAColumnas" placeholder="Columnas A" formControlName="matrizAColumnas">
-                      <label for="matrizAColumnas">Columnas Matriz A</label>
-                    </div>
-                  </div>
-                  
-                  <div class="matriz-inputs">
-                    <div class="form-floating mb-2 contenedorTextbox">
-                      <input type="text" class="form-control" id="matrizBFilas" placeholder="Filas B" formControlName="matrizBFilas">
-                      <label for="matrizBFilas">Filas Matriz B</label>
-                    </div>
-                    <div class="form-floating mb-2 contenedorTextbox">
-                      <input type="text" class="form-control" id="matrizBColumnas" placeholder="Columnas B" formControlName="matrizBColumnas">
-                      <label for="matrizBColumnas">Columnas Matriz B</label>
-                    </div>
-                  </div>
-
-                </div>
-              </form>
-            </mat-card-content>
-          </mat-card>
+        <div class="infoMatrixA"> 
+          <h2>Matrix A</h2>
+          <div class="infoMatrix">
+            <form class="grid" [formGroup]="matrixAForm">
+              <div class="rowsInfo">
+                <input type="text" class="form-control" id="matrizArows" placeholder="rows A"  formControlName="rows">
+                <label for="matrizArows">rows Matriz A</label>
+              </div>
+              <div class="columnsInfo">
+                <input type="text" class="form-control" id="matrizAColumns" placeholder="Columns A"  formControlName="columns">
+                <label for="matrizBColumns">Columns Matriz A</label>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="infoMatrixB">
+          <h2>Matrix B</h2>
+          <div class="infoMatrix">
+            <div class="rowsInfo">
+              <input type="text" class="form-control" id="matrizBrows" placeholder="rows B">
+              <label for="matrizArows">rows Matriz B</label>
+            </div>
+            <div class="columnsInfo">
+              <input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" >
+              <label for="matrizBColumns">Columns Matriz B</label>
+            </div>
+          </div>
         </div>
       </div>
     </div>

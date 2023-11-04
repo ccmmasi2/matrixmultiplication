@@ -18,17 +18,11 @@ export class ApiService {
   getListInputOptions(): Observable<inputList[]> {
     return this.http.get<inputList[]>(`${this.baseUrl}/api/Process/GetInputList`);
   }
-  
+
   getProcessById(id: number): Observable<ProcessPpal | undefined> {
     return this.http
-      .get<{
-        responseCode: number;
-        message: string;
-        status: boolean;
-        data: ProcessPpal;
-      }>(`${this.baseUrl}/api/Process/${id}`)
+      .get<ProcessPpal>(`${this.baseUrl}/api/Process/${id}`)
       .pipe(
-        map((response) => response.data),
         catchError((error) => of(undefined))
       );
   }

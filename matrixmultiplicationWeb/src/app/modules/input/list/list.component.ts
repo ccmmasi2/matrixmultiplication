@@ -68,6 +68,6 @@ export class ListComponent implements OnInit {
   }
 
   goToWatch(processId: number) {
-    this.router.navigate(['input/create/', processId]);
+    this.router.navigate(['input/create', processId]);
   }
 }

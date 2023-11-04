@@ -6,17 +6,17 @@
           <div class="infoMatrix">
             <form class="grid" [formGroup]="matrixAForm">
               <div class="rowsInfo">
-                Rows:<input type="text" class="form-control" id="matrizArows" placeholder="rows A"  formControlName="rows" appNumericInput>
+                Rows:<input type="text" class="form-control" id="matrixARows" placeholder="rows A"  formControlName="rows" appNumericInput>
               </div>
               <div class="columnsInfo">
-                Columns:<input type="text" class="form-control" id="matrizAColumns" placeholder="Columns A"  formControlName="columns" appNumericInput>
+                Columns:<input type="text" class="form-control" id="matrixAColumns" placeholder="Columns A"  formControlName="columns" appNumericInput>
               </div>
             </form>
             <div class="detail">
               <table>
                 <tr *ngFor="let row of dataMatrixA">
                   <td *ngFor="let cell of row">
-                    <input type="text" class="cellValue" id="matrizACell" [ngModel]="cell" [ngModelOptions]="{standalone: true}" appNumericInput>
+                    <input type="text" class="cellValue" id="matrixACell" [ngModel]="cell" [ngModelOptions]="{standalone: true}" appNumericInput>
                   </td>
                 </tr>
               </table>
@@ -28,17 +28,17 @@
           <div class="infoMatrix">
             <form class="grid" [formGroup]="matrixAForm">
               <div class="rowsInfo">
-                Rows:<input type="text" class="form-control" id="matrizBrows" placeholder="rows B" formControlName="rows" appNumericInput>
+                Rows:<input type="text" class="form-control" id="matrixBRows" placeholder="rows B" formControlName="rows" appNumericInput>
               </div>
               <div class="columnsInfo">
-                Columns:<input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" formControlName="columns" appNumericInput>
+                Columns:<input type="text" class="form-control" id="matrixBColumns" placeholder="Columns B" formControlName="columns" appNumericInput>
               </div>
             </form>
             <div class="detail">
               <table>
                 <tr *ngFor="let row of dataMatrixB">
                   <td *ngFor="let cell of row">
-                    <input type="text" class="cellValue" id="matrizBCell" [ngModel]="cell" [ngModelOptions]="{standalone: true}" appNumericInput>
+                    <input type="text" class="cellValue" id="matrixBCell" [ngModel]="cell" [ngModelOptions]="{standalone: true}" appNumericInput>
                   </td>
                 </tr>
               </table>

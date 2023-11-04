@@ -99,6 +99,8 @@ export class CreateComponent implements OnInit {
           this.router.navigate(['']);
         }
         else{
+          console.log("loadProcessData");
+          console.log(process);
           this.fillValuesFromDB(process);
         }
       });
@@ -129,10 +131,7 @@ export class CreateComponent implements OnInit {
   }
 
   createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[]): number[][] {
-    console.log("rows-" + rows);
-    console.log("columns-" + columns);
-    console.log(matrixDetail);
-    const matriz = [];
+    const matrix = [];
   
     for (let i = 1; i <= rows; i++) {
       const fila = [];
@@ -147,9 +146,9 @@ export class CreateComponent implements OnInit {
         }
       }
   
-      matriz.push(fila);
+      matrix.push(fila);
     }
   
-    return matriz;
+    return matrix;
   }
 }

@@ -33,6 +33,8 @@ export class CreateComponent implements OnInit {
     private activateRoute: ActivatedRoute,
   ) {
     this.buildForm();
+    this.dataMatrixA = [[0, 0], [0, 0]];
+    this.dataMatrixB = [[0, 0], [0, 0]]; 
   }
 
   buildForm() {
@@ -46,7 +48,6 @@ export class CreateComponent implements OnInit {
     }); 
   } 
 
-  /* */
   get currentAProcess(): Matrix {
     const process = this.matrixAForm.value as Matrix;
     return process;
@@ -111,8 +112,6 @@ export class CreateComponent implements OnInit {
   fillValuesFromDB(process: ProcessPpal){
     this.matrixAForm.reset(process?.matrix[0]);
     this.matrixBForm.reset(process?.matrix[1]);
-    this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail);
-    this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail);
   }
 
   undoChanges() {
@@ -130,18 +129,14 @@ export class CreateComponent implements OnInit {
     return Array.from({ length: count }, (_, index) => index + 1);
   }
 
-  createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[] | null): number[][] {
+  createMatrix(rows: number, columns: number): number[][] {
     const matrix = [];
   
-    for (let i = 1; i <= rows; i++) {
+    for (let i = 0; i < rows; i++) {
       const fila = [];
   
-      for (let j = 1; j <= columns; j++) {
-        let elemento = 0;
-        if(matrixDetail){
-            elemento = matrixDetail.find((detail) => detail.row === i && detail.column === j)!.value;
-        }
-        fila.push(elemento);
+      for (let j = 0; j < columns; j++) {
+        fila.push(0);
       }
   
       matrix.push(fila);
@@ -152,8 +147,8 @@ export class CreateComponent implements OnInit {
 
   generateTables(){
     if (this.matrixAForm.valid && this.matrixBForm.valid) { 
-      this.dataMatrixA = this.createMatrix(this.currentAProcess.rows, this.currentAProcess.columns, null);
-      this.dataMatrixB = this.createMatrix(this.currentBProcess.rows, this.currentBProcess.columns, null);
+      this.dataMatrixA = this.createMatrix(this.currentAProcess.rows, this.currentAProcess.columns);
+      this.dataMatrixB = this.createMatrix(this.currentBProcess.rows, this.currentBProcess.columns);
       this.showInsertButton = true;
       
       if(this.currentAProcess.columns != this.currentBProcess.rows){

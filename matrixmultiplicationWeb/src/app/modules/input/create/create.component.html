@@ -23,9 +23,14 @@
             </form>
             <div class="detail">
               <table> 
-                <tr *ngFor="let row of dataMatrixA">
-                  <td *ngFor="let cell of row">
-                    <input type="text" class="cellValue" id="matrixACell" [ngModel]="cell" [ngModelOptions]="{standalone: true}">
+                <tr *ngFor="let row of dataMatrixA; let i = index">
+                  <td *ngFor="let cell of row; let j = index">
+                    <input 
+                      type="text" 
+                      class="cellValue" 
+                      id="matrixACell_{{i}}_{{j}}" 
+                      [(ngModel)]="dataMatrixA![i][j]"
+                      [ngModelOptions]="{standalone: true}">
                   </td>
                 </tr>
               </table>
@@ -45,9 +50,14 @@
             </form>
             <div class="detail">
               <table>
-                <tr *ngFor="let row of dataMatrixB">
-                  <td *ngFor="let cell of row">
-                    <input type="text" class="cellValue" id="matrixBCell" [ngModel]="cell" [ngModelOptions]="{standalone: true}">
+                <tr *ngFor="let row of dataMatrixB; let i = index">
+                  <td *ngFor="let cell of row; let j = index">
+                    <input 
+                      type="text" 
+                      class="cellValue" 
+                      id="matrixACell_{{i}}_{{j}}" 
+                      [(ngModel)]="dataMatrixB![i][j]"
+                      [ngModelOptions]="{standalone: true}">
                   </td>
                 </tr>
               </table>

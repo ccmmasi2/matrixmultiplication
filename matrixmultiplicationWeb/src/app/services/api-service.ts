@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ProcessPpal } from '@app/interfaces/ProcessPpal';
 import { InputCreate } from '@app/models/inputCreate.model';
 import { inputList } from '@app/models/inputList.model';
 import { environment } from 'enviroment/enviroment';
@@ -18,13 +19,13 @@ export class ApiService {
     return this.http.get<inputList[]>(`${this.baseUrl}/api/Process/GetInputList`);
   }
   
-  getProcessById(id: number): Observable<InputCreate | undefined> {
+  getProcessById(id: number): Observable<ProcessPpal | undefined> {
     return this.http
       .get<{
         responseCode: number;
         message: string;
         status: boolean;
-        data: InputCreate;
+        data: ProcessPpal;
       }>(`${this.baseUrl}/api/Process/${id}`)
       .pipe(
         map((response) => response.data),

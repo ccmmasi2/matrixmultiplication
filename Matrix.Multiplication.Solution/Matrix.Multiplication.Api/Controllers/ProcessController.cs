@@ -28,7 +28,7 @@ namespace Matrix.Multiplication.Api.Controllers
             return Ok(LItems);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public object GetById(int id)
         {

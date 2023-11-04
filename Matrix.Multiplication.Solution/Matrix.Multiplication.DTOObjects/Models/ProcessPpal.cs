@@ -14,7 +14,5 @@ namespace Matrix.Multiplication.DTOObjects.Models
 
         [Required(ErrorMessage = "Required field")]
         public bool Status { get; set; }
-
-        public List<ProcessMatrix> LProcessMatrix = new List<ProcessMatrix>();
     }
 }

@@ -51,10 +51,10 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
             return query.AsQueryable();
         }
 
-        public ProcessPpal GetProcessById(int ID)
+        public object GetProcessById(int ID)
         {
-            ProcessPpal ProcessObject = new ProcessPpal();
-            List<ProcessMatrix> LProcessMatrixObject = new List<ProcessMatrix>();
+            ProcessPpal ProcessObject = null;
+            List<ProcessMatrix> LProcessMatrixObject = null;
             List<ProcessMatrixDetail> LProcessMatrixDetailObject = null;
 
             ProcessObject = (from ProcessPpal in _dbcontext.ProcessPpal
@@ -73,13 +73,28 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
                                               join matrixDetail in _dbcontext.ProcessMatrixDetail on matrix.ID equals matrixDetail.IDProcessMatrix
                                               where matrix.ID == item.ID
                                               select matrixDetail).ToList();
-
-                item.LProcessMatrixDetail = LProcessMatrixDetailObject;
             }
 
-            ProcessObject.LProcessMatrix = LProcessMatrixObject;
+            var result = new
+            {
+                processID = ProcessObject.ID,
+                processDate = ProcessObject.Date,
+                processStatus = ProcessObject.Status,
+                matrix = LProcessMatrixObject.Select(matrix => new
+                {
+                    matrixName = matrix.MatrixName,
+                    rows = matrix.Rows,
+                    columns = matrix.Columns,
+                    detail = LProcessMatrixDetailObject.Select(detail => new
+                    {
+                        row = detail.Row,
+                        column = detail.Column,
+                        value = detail.Value
+                    }).ToList()
+                }).ToList()
+            };
 
-            return ProcessObject;
+            return result;
         }
     }
 }

@@ -30,14 +30,14 @@ namespace Matrix.Multiplication.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ProcessPpal GetById(int id)
+        public object GetById(int id)
         {
             if (id == 0)
             {
                 _logger.LogError("Must send the ID!");
             }
 
-            ProcessPpal Item = _repo.GetProcessById(id);
+            object Item = _repo.GetProcessById(id);
 
             return Item;
         }

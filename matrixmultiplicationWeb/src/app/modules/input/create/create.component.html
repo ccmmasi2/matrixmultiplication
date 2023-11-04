@@ -22,7 +22,7 @@
               </div>
             </form>
             <div class="detail">
-              <table>
+              <table> 
                 <tr *ngFor="let row of dataMatrixA">
                   <td *ngFor="let cell of row">
                     <input type="text" class="cellValue" id="matrixACell" [ngModel]="cell" [ngModelOptions]="{standalone: true}">

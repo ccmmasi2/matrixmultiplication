@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
+import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
   {
@@ -12,12 +13,11 @@ const routes: Routes = [
         component: ListComponent,
       },
       {
-        path: 'create',
-        component: CreateComponent,
-        data: { processId: null },
+        path: 'view/:id',
+        component: ViewComponent,
       },
       {
-        path: 'create/:id',
+        path: 'create',
         component: CreateComponent,
       },
     ],

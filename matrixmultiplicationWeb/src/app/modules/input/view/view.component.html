@@ -1,0 +1,64 @@
+<div class="contain-head">
+  <div class="contain-title">Entrada</div>
+  <div class="breadcrumbs">
+    <app-bread-crumb
+    [textPrincipal]="'Listado Entradas,/input/list'"
+    [textSecundary]="'Entradas'"
+    ></app-bread-crumb>
+  </div> 
+</div> 
+<br>
+<div *ngIf="!validResult" class="contain-title">  
+  Esta definición de filas y columnas no generó multiplicación de matrices
+</div>
+<div class="basic-container">
+  <div class="contain-main">
+    <div class="contain-body">
+      <div class="infoMatrixA"> 
+        <h2>Matrix A</h2>
+        <div class="infoMatrix">
+          <form class="grid" [formGroup]="matrixAForm">
+            <div class="rowsInfo">
+              Rows:<input type="text" class="form-control" id="matrixARows" placeholder="rows A"  formControlName="rows" appNumericInput>
+            </div>
+            <div class="columnsInfo">
+              Columns:<input type="text" class="form-control" id="matrixAColumns" placeholder="Columns A"  formControlName="columns" appNumericInput>
+            </div>
+          </form>
+          <div class="detail">
+            <table> 
+              <tr *ngFor="let row of dataMatrixA">
+                <td *ngFor="let cell of row">
+                  <input type="text" class="cellValue" id="matrixACell" [ngModel]="cell" [ngModelOptions]="{standalone: true}">
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="infoMatrixB">
+        <h2>Matrix B</h2>
+        <div class="infoMatrix">
+          <form class="grid" [formGroup]="matrixBForm">
+            <div class="rowsInfo">
+              Rows:<input type="text" class="form-control" id="matrixBRows" placeholder="rows B" formControlName="rows" appNumericInput>
+            </div>
+            <div class="columnsInfo">
+              Columns:<input type="text" class="form-control" id="matrixBColumns" placeholder="Columns B" formControlName="columns" appNumericInput>
+            </div>
+          </form>
+          <div class="detail">
+            <table>
+              <tr *ngFor="let row of dataMatrixB">
+                <td *ngFor="let cell of row">
+                  <input type="text" class="cellValue" id="matrixBCell" [ngModel]="cell" [ngModelOptions]="{standalone: true}">
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+<br> 

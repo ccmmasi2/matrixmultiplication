@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material/material/material.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { NumericInputDirective } from '@app/rules/numeric-input.directive';
+import { ViewComponent } from './view/view.component';
 
 @NgModule({
   declarations: [
     ListComponent,
     CreateComponent,
-    NumericInputDirective
+    NumericInputDirective,
+    ViewComponent
   ],
   imports: [
     CommonModule,

@@ -10,21 +10,19 @@ import { ApiService } from '@app/services/api-service';
 import { Subject, switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css'],
+  selector: 'app-view',
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css']
 })
 
-export class CreateComponent implements OnInit {
+export class ViewComponent implements OnInit {
   public matrixAForm!: FormGroup;
   public matrixBForm!: FormGroup;
-  public dataMatrixA!: number[][] | null;
-  public dataMatrixB!: number[][] | null;
-  process: InputCreate | undefined;
-  formReadOnly: boolean = false;
+  dataMatrixA!: number[][] | null;
+  dataMatrixB!: number[][] | null;
   validResult: boolean = true;
-  showInsertButton: boolean = false;
-
+  isDisabled: boolean = true;
+  
   constructor(
     public apiService: ApiService,
     private router: Router,
@@ -56,31 +54,6 @@ export class CreateComponent implements OnInit {
     const process = this.matrixBForm.value as Matrix;
     return process;
   }
-  
-  saveTransaction(){
-    if (this.matrixAForm.valid && this.matrixBForm.valid) {
-      const dataToSave = {
-        matrixA: this.matrixAForm.value,
-        matrixB: this.matrixBForm.value,
-        dataMatrixA: this.dataMatrixA, 
-        dataMatrixB: this.dataMatrixB,  
-      };
-      console.log(dataToSave);
-        // this.apiService.addProcess(this.currentProcess).subscribe(
-        // (process) =>  {
-        //   const message = `Los cambios han sido guardados.`;
-        //   this.formReadOnly = true;
-        //   },
-        //   (error) => {
-        //     console.error('Error:', error);
-        //     const mensaje = `Error creando el usuario.`;
-        //     this.formReadOnly = false;
-        //   }
-        // );
-    }
-  }
-
-  /* */
 
   ngOnInit(): void {
     this.loadProcess();
@@ -113,22 +86,8 @@ export class CreateComponent implements OnInit {
     this.matrixBForm.reset(process?.matrix[1]);
     this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail);
     this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail);
-  }
-
-  undoChanges() {
-    this.matrixAForm.reset();
-    this.matrixBForm.reset();
-    this.dataMatrixA = null;
-    this.dataMatrixB = null;
-  }
-
-  handleEditClick(): void {
-    this.formReadOnly = false;
-  }
-
-  getRange(count: number): number[] {
-    return Array.from({ length: count }, (_, index) => index + 1);
-  }
+    this.validResult = process.processStatus;
+  } 
 
   createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[] | null): number[][] {
     const matrix = [];
@@ -148,24 +107,5 @@ export class CreateComponent implements OnInit {
     }
   
     return matrix;
-  }
-
-  generateTables(){
-    if (this.matrixAForm.valid && this.matrixBForm.valid) { 
-      this.dataMatrixA = this.createMatrix(this.currentAProcess.rows, this.currentAProcess.columns, null);
-      this.dataMatrixB = this.createMatrix(this.currentBProcess.rows, this.currentBProcess.columns, null);
-      this.showInsertButton = true;
-      
-      if(this.currentAProcess.columns != this.currentBProcess.rows){
-        this.validResult = false;
-      }
-      else{
-        this.validResult = true;
-      }
-    }
-    else {
-      this.undoChanges();
-      this.showInsertButton = false;
-    }
   }
 }

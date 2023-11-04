@@ -33,8 +33,6 @@ export class CreateComponent implements OnInit {
     private activateRoute: ActivatedRoute,
   ) {
     this.buildForm();
-    this.dataMatrixA = [[0, 0], [0, 0]];
-    this.dataMatrixB = [[0, 0], [0, 0]]; 
   }
 
   buildForm() {
@@ -60,28 +58,20 @@ export class CreateComponent implements OnInit {
   
   saveTransaction(){
     if (this.matrixAForm.valid && this.matrixBForm.valid) {
-      const dataToSave = {
-        matrixA: this.matrixAForm.value,
-        matrixB: this.matrixBForm.value,
-        dataMatrixA: this.dataMatrixA, 
-        dataMatrixB: this.dataMatrixB,  
-      };
-      console.log(dataToSave);
-        // this.apiService.addProcess(this.currentProcess).subscribe(
-        // (process) =>  {
-        //   const message = `Los cambios han sido guardados.`;
-        //   this.formReadOnly = true;
-        //   },
-        //   (error) => {
-        //     console.error('Error:', error);
-        //     const mensaje = `Error creando el usuario.`;
-        //     this.formReadOnly = false;
-        //   }
-        // );
+      let processToSave = this.createObjectToSave(this.matrixAForm.value, this.matrixBForm.value, this.dataMatrixA!, this.dataMatrixB!);
+      this.apiService.addProcess(processToSave).subscribe(
+      (process) =>  {
+        const message = `Los cambios han sido guardados.`;
+        this.formReadOnly = true;
+        },
+        (error) => {
+          console.error('Error:', error);
+          const mensaje = `Error creando el usuario.`;
+          this.formReadOnly = false;
+        }
+      );
     }
   }
-
-  /* */
 
   ngOnInit(): void {
     this.loadProcess();
@@ -162,5 +152,50 @@ export class CreateComponent implements OnInit {
       this.undoChanges();
       this.showInsertButton = false;
     }
+  }
+
+  createObjectToSave(matrixA: Matrix, matrixB: Matrix, dataMatrixA: number[][], dataMatrixB: number[][]): ProcessPpal {
+    let arrayDetailA: MatrixDetail[] = this.createDetailFromMatrix(dataMatrixA);
+    let arrayDetailB: MatrixDetail[] = this.createDetailFromMatrix(dataMatrixB);
+    
+    let processToSave: ProcessPpal = {
+      processID: 1,
+      processDate: new Date(),
+      processStatus: this.validResult,
+      matrix: [
+        {
+          matrixName: 'A',
+          rows: matrixA.rows,
+          columns: matrixA.columns,
+          detail: arrayDetailA
+        },
+        {
+          matrixName: 'B',
+          rows: matrixB.rows,
+          columns: matrixB.columns,
+          detail: arrayDetailB
+        }
+      ]
+    } 
+
+    return processToSave;
+  } 
+
+  createDetailFromMatrix(dataMatrix: number[][]): MatrixDetail[] {
+    let arrayDetailA: MatrixDetail[] = [];
+
+    for (let i = 0; i < dataMatrix.length; i++) {
+      for (let j = 0; j < dataMatrix[i].length; j++) {
+        const cellValue = dataMatrix[i][j];
+        let detailA: MatrixDetail = {
+          row: i + 1,
+          column: j + 1,
+          value: cellValue
+        };
+        arrayDetailA.push(detailA);
+      }
+    }
+
+    return arrayDetailA;
   }
 }

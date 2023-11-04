@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProcessPpal } from '@app/interfaces/ProcessPpal';
 import { InputCreate } from '@app/models/inputCreate.model';
@@ -27,17 +27,21 @@ export class ApiService {
       );
   }
 
-  addProcess(inputCreate: InputCreate): Observable<number> {
+  addProcess(inputCreate: ProcessPpal): Observable<number> {
+    const url = `${this.baseUrl}/api/Process`;  
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+
     return this.http
-      .post<{
-        responseCode: number;
-        message: string;
-        status: boolean;
-        data: number;
-      }>(`${this.baseUrl}/api/Process`, inputCreate)
+      .post<number>(url, inputCreate, httpOptions)
       .pipe(
-        map((response) => response.data),
-        catchError((error) => of(0))
+        map((response) => response),
+        catchError((error) => {
+          console.error('Error:', error);
+          return of(0); 
+        })
       );
   }
 

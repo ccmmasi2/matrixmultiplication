@@ -29,8 +29,7 @@
                       type="text" 
                       class="cellValue" 
                       id="matrixACell_{{i}}_{{j}}" 
-                      [(ngModel)]="dataMatrixA![i][j]"
-                      [ngModelOptions]="{standalone: true}">
+                      [(ngModel)]="dataMatrixA![i][j]">
                   </td>
                 </tr>
               </table>
@@ -52,12 +51,12 @@
               <table>
                 <tr *ngFor="let row of dataMatrixB; let i = index">
                   <td *ngFor="let cell of row; let j = index">
+                    <label>asdf</label>
                     <input 
                       type="text" 
                       class="cellValue" 
-                      id="matrixACell_{{i}}_{{j}}" 
-                      [(ngModel)]="dataMatrixB![i][j]"
-                      [ngModelOptions]="{standalone: true}">
+                      id="matrixBCell_{{i}}_{{j}}" 
+                      [(ngModel)]="dataMatrixB![i][j]">
                   </td>
                 </tr>
               </table>

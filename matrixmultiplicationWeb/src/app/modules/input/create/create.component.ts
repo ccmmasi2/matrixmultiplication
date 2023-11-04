@@ -22,6 +22,8 @@ export class CreateComponent implements OnInit {
   dataMatrixB!: number[][] | null;
   process: InputCreate | undefined;
   formReadOnly: boolean = false;
+  validResult: boolean = true;
+  showInsertButton: boolean = false;
 
   constructor(
     public apiService: ApiService,
@@ -151,9 +153,18 @@ export class CreateComponent implements OnInit {
     if (this.matrixAForm.valid && this.matrixBForm.valid) { 
       this.dataMatrixA = this.createMatrix(this.currentAProcess.rows, this.currentAProcess.columns, null);
       this.dataMatrixB = this.createMatrix(this.currentBProcess.rows, this.currentBProcess.columns, null);
+      this.showInsertButton = true;
+      
+      if(this.currentAProcess.columns != this.currentBProcess.rows){
+        this.validResult = false;
+      }
+      else{
+        this.validResult = true;
+      }
     }
     else {
       this.undoChanges();
+      this.showInsertButton = false;
     }
   }
 }

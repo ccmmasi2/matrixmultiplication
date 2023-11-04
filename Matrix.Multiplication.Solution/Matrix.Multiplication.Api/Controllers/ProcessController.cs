@@ -30,22 +30,16 @@ namespace Matrix.Multiplication.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<object>> GetById(int id)
+        public ProcessPpal GetById(int id)
         {
             if (id == 0)
             {
                 _logger.LogError("Must send the ID!");
-                return BadRequest();
             }
 
-            var Item = _repo.GetProcessById(id);
+            ProcessPpal Item = _repo.GetProcessById(id);
 
-            if (Item == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(Item);
+            return Item;
         }
 
         //[HttpGet("ByName/{name}", Name = "GetCategoryByName")]

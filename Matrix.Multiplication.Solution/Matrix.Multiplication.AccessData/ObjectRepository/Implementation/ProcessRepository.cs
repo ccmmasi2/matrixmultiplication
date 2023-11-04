@@ -2,6 +2,7 @@
 using Matrix.Multiplication.AccessData.ObjectRepository.Interface;
 using Matrix.Multiplication.AccessData.Repository.Implementation;
 using Matrix.Multiplication.DTOObjects.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
 {
@@ -52,34 +53,33 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
 
         public ProcessPpal GetProcessById(int ID)
         {
-            ProcessPpal Process = new ProcessPpal();
-            List<ProcessMatrix> LProcessMatrix = new List<ProcessMatrix>();
-            List<ProcessMatrixDetail> LProcessMatrixDetail = new List<ProcessMatrixDetail>();
+            ProcessPpal ProcessObject = new ProcessPpal();
+            List<ProcessMatrix> LProcessMatrixObject = new List<ProcessMatrix>();
+            List<ProcessMatrixDetail> LProcessMatrixDetailObject = null;
 
-            Process = (from ProcessPpal in _dbcontext.ProcessPpal
-                       where ProcessPpal.ID == ID
-                       select ProcessPpal).FirstOrDefault();
+            ProcessObject = (from ProcessPpal in _dbcontext.ProcessPpal
+                             where ProcessPpal.ID == ID
+                             select ProcessPpal).FirstOrDefault();
 
-            LProcessMatrix = (from ProcessPpal in _dbcontext.ProcessPpal
-                              join matrix in _dbcontext.ProcessMatrix on ProcessPpal.ID equals matrix.IDProcess
-                              where ProcessPpal.ID == ID
-                              select matrix).ToList();
+            LProcessMatrixObject = (from ProcessPpal in _dbcontext.ProcessPpal
+                                    join matrix in _dbcontext.ProcessMatrix on ProcessPpal.ID equals matrix.IDProcess
+                                    where ProcessPpal.ID == ID
+                                    select matrix).ToList();
 
-            foreach (ProcessMatrix item in LProcessMatrix)
+            foreach (ProcessMatrix item in LProcessMatrixObject)
             {
-                LProcessMatrixDetail = new List<ProcessMatrixDetail>();
-                LProcessMatrixDetail = (from matrix in _dbcontext.ProcessMatrix
-                                        join matrixDetail in _dbcontext.ProcessMatrixDetail on matrix.ID equals matrixDetail.IDProcessMatrix
-                                        where matrix.ID == item.ID
-                                        select matrixDetail).ToList();
+                LProcessMatrixDetailObject = new List<ProcessMatrixDetail>();
+                LProcessMatrixDetailObject = (from matrix in _dbcontext.ProcessMatrix
+                                              join matrixDetail in _dbcontext.ProcessMatrixDetail on matrix.ID equals matrixDetail.IDProcessMatrix
+                                              where matrix.ID == item.ID
+                                              select matrixDetail).ToList();
 
-                item.LProcessMatrixDetail = LProcessMatrixDetail;
+                item.LProcessMatrixDetail = LProcessMatrixDetailObject;
             }
 
-            Process.LProcessMatrix = LProcessMatrix;
+            ProcessObject.LProcessMatrix = LProcessMatrixObject;
 
-            return Process;
+            return ProcessObject;
         }
-         
     }
 }

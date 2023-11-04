@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EventService } from './services/EventService';
+import { EventService } from './services/EventService'; 
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { EventService } from './services/EventService';
     InputModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
   providers: [EventService],

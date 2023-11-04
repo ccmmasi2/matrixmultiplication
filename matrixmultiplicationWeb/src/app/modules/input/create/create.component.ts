@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Matrix } from '@app/interfaces/Matrix';
+import { MatrixDetail } from '@app/interfaces/MatrixDetail';
 import { ProcessPpal } from '@app/interfaces/ProcessPpal';
 import { InputCreate } from '@app/models/inputCreate.model';
 import { ApiService } from '@app/services/api-service';
@@ -16,6 +18,8 @@ import { Subject, switchMap } from 'rxjs';
 export class CreateComponent implements OnInit {
   public matrixAForm!: FormGroup;
   public matrixBForm!: FormGroup;
+  dataMatrixA!: number[][];
+  dataMatrixB!: number[][];
   process: InputCreate | undefined;
   formSubmitted: boolean = false;
   hasUnsavedChanges: boolean = false;
@@ -40,7 +44,7 @@ export class CreateComponent implements OnInit {
     this.matrixBForm = this.formBuilder.group({
       rows: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
       columns: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
-    });
+    }); 
   } 
 
   /* */
@@ -76,7 +80,7 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProcess();
-  }
+  } 
   
   loadProcess(): void {
     this.activateRoute.params.subscribe((params) => {
@@ -103,6 +107,8 @@ export class CreateComponent implements OnInit {
   fillValuesFromDB(process: ProcessPpal){
     this.matrixAForm.reset(process?.matrix[0]);
     this.matrixBForm.reset(process?.matrix[1]);
+    this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail);
+    this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail);
   }
 
   undoChanges() {
@@ -116,5 +122,34 @@ export class CreateComponent implements OnInit {
 
   handleEditClick(): void {
     this.formReadOnly = false;
+  }
+
+  getRange(count: number): number[] {
+    return Array.from({ length: count }, (_, index) => index + 1);
+  }
+
+  createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[]): number[][] {
+    console.log("rows-" + rows);
+    console.log("columns-" + columns);
+    console.log(matrixDetail);
+    const matriz = [];
+  
+    for (let i = 1; i <= rows; i++) {
+      const fila = [];
+  
+      for (let j = 1; j <= columns; j++) {
+        const elemento = matrixDetail.find((detail) => detail.row === i && detail.column === j);
+  
+        if (elemento) {
+          fila.push(elemento.value);
+        } else {
+          fila.push(0);  
+        }
+      }
+  
+      matriz.push(fila);
+    }
+  
+    return matriz;
   }
 }

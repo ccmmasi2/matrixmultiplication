@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { InputRoutingModule } from './input-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material/material/material.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { NumericInputDirective } from '@app/rules/numeric-input.directive';
@@ -20,6 +20,7 @@ import { NumericInputDirective } from '@app/rules/numeric-input.directive';
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
+    FormsModule
   ],
 })
 export class InputModule { }

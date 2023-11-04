@@ -6,15 +6,21 @@
           <div class="infoMatrix">
             <form class="grid" [formGroup]="matrixAForm">
               <div class="rowsInfo">
-                <input type="text" class="form-control" id="matrizArows" placeholder="rows A"  formControlName="rows" appNumericInput>
-                <label for="matrizArows">rows Matriz A</label>
+                Rows:<input type="text" class="form-control" id="matrizArows" placeholder="rows A"  formControlName="rows" appNumericInput>
               </div>
               <div class="columnsInfo">
-                <input type="text" class="form-control" id="matrizAColumns" placeholder="Columns A"  formControlName="columns" appNumericInput>
-                <label for="matrizBColumns">Columns Matriz A</label>
+                Columns:<input type="text" class="form-control" id="matrizAColumns" placeholder="Columns A"  formControlName="columns" appNumericInput>
               </div>
             </form>
-
+            <div class="detail">
+              <table>
+                <tr *ngFor="let row of dataMatrixA">
+                  <td *ngFor="let cell of row">
+                    <input type="text" class="cellValue" id="matrizACell" [ngModel]="cell" [ngModelOptions]="{standalone: true}" appNumericInput>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
         <div class="infoMatrixB">
@@ -22,14 +28,21 @@
           <div class="infoMatrix">
             <form class="grid" [formGroup]="matrixAForm">
               <div class="rowsInfo">
-                <input type="text" class="form-control" id="matrizBrows" placeholder="rows B" formControlName="rows" appNumericInput>
-                <label for="matrizArows">rows Matriz B</label>
+                Rows:<input type="text" class="form-control" id="matrizBrows" placeholder="rows B" formControlName="rows" appNumericInput>
               </div>
               <div class="columnsInfo">
-                <input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" formControlName="columns" appNumericInput>
-                <label for="matrizBColumns">Columns Matriz B</label>
+                Columns:<input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" formControlName="columns" appNumericInput>
               </div>
             </form>
+            <div class="detail">
+              <table>
+                <tr *ngFor="let row of dataMatrixB">
+                  <td *ngFor="let cell of row">
+                    <input type="text" class="cellValue" id="matrizBCell" [ngModel]="cell" [ngModelOptions]="{standalone: true}" appNumericInput>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
       </div>

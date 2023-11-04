@@ -243,4 +243,9 @@ a:hover {
 
 /*modal-actions*/
 
- 
+.cellValue {
+  width: 20px;
+  text-align: center;
+  padding-left: 20px;
+}
+

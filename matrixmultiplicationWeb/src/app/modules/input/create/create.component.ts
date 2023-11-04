@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProcessPpal } from '@app/interfaces/ProcessPpal';
@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit {
       rows: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
       columns: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
     });
-  }
+  } 
 
   /* */
   get currentProcess(): InputCreate {

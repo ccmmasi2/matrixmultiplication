@@ -6,18 +6,20 @@ import { InputRoutingModule } from './input-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@app/material/material/material.module';
 import { SharedModule } from '@app/shared/shared.module';
+import { NumericInputDirective } from '@app/rules/numeric-input.directive';
 
 @NgModule({
   declarations: [
     ListComponent,
-    CreateComponent
+    CreateComponent,
+    NumericInputDirective
   ],
   imports: [
     CommonModule,
     InputRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
   ],
 })
 export class InputModule { }

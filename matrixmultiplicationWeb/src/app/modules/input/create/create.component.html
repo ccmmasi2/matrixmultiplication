@@ -6,14 +6,15 @@
           <div class="infoMatrix">
             <form class="grid" [formGroup]="matrixAForm">
               <div class="rowsInfo">
-                <input type="text" class="form-control" id="matrizArows" placeholder="rows A"  formControlName="rows">
+                <input type="text" class="form-control" id="matrizArows" placeholder="rows A"  formControlName="rows" appNumericInput>
                 <label for="matrizArows">rows Matriz A</label>
               </div>
               <div class="columnsInfo">
-                <input type="text" class="form-control" id="matrizAColumns" placeholder="Columns A"  formControlName="columns">
+                <input type="text" class="form-control" id="matrizAColumns" placeholder="Columns A"  formControlName="columns" appNumericInput>
                 <label for="matrizBColumns">Columns Matriz A</label>
               </div>
             </form>
+
           </div>
         </div>
         <div class="infoMatrixB">
@@ -21,11 +22,11 @@
           <div class="infoMatrix">
             <form class="grid" [formGroup]="matrixAForm">
               <div class="rowsInfo">
-                <input type="text" class="form-control" id="matrizBrows" placeholder="rows B" formControlName="rows">
+                <input type="text" class="form-control" id="matrizBrows" placeholder="rows B" formControlName="rows" appNumericInput>
                 <label for="matrizArows">rows Matriz B</label>
               </div>
               <div class="columnsInfo">
-                <input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" formControlName="columns">
+                <input type="text" class="form-control" id="matrizBColumns" placeholder="Columns B" formControlName="columns" appNumericInput>
                 <label for="matrizBColumns">Columns Matriz B</label>
               </div>
             </form>

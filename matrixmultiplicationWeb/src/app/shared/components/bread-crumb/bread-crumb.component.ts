@@ -3,7 +3,6 @@ import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/
 @Component({
   selector: 'app-bread-crumb',
   templateUrl: './bread-crumb.component.html',
-  styleUrls: ['./bread-crumb.component.css']
 })
 
 export class BreadCrumbComponent {

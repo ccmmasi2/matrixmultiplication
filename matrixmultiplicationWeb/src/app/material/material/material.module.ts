@@ -25,7 +25,7 @@ import { MatMenuModule } from '@angular/material/menu';
   exports: [
     // MatAutocompleteModule,
     // MatButtonModule,
-    // MatCardModule,
+    MatCardModule,
     // MatChipsModule,
     MatDialogModule,
     // MatFormFieldModule,

@@ -9,7 +9,6 @@ import { ActionsDialogComponent } from '@app/shared/components/actions-dialog/ac
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
 })
 
 export class ListComponent implements OnInit {
@@ -50,10 +49,11 @@ export class ListComponent implements OnInit {
   }
   
   openActionsDialog(event: MouseEvent, element: any) {
+    const inputList: inputList = element as inputList;
     const offsetX = 120;
     const offsety = 20;
     this.dialog.open(ActionsDialogComponent, {
-      //data: { user: userObject },
+      data: { user: inputList.IDProcess },
       position: {
         top: event.clientY - offsety + 'px',
         left: event.clientX - offsetX + 'px',

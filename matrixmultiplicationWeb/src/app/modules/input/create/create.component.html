@@ -1,1 +1,40 @@
-<p>create works!</p>
+<div class="basic-container">
+    <div class="contain-main">
+      <div class="contain-body">
+        <div class="col-12 sm:col-6">
+          <mat-card>
+            <mat-card-content>
+              <form class="grid" [formGroup]="matrixForm" (ngSubmit)="onSubmit($event)">
+                <div class="d-flex flex-row">
+                  <!-- Matriz A -->
+                  <div class="matriz-inputs">
+                    <div class="form-floating mb-2 contenedorTextbox">
+                      <input type="text" class="form-control" id="matrizAFilas" placeholder="Filas A" formControlName="matrizAFilas">
+                      <label for="matrizAFilas">Filas Matriz A</label>
+                    </div>
+                    <div class="form-floating mb-2 contenedorTextbox">
+                      <input type="text" class="form-control" id="matrizAColumnas" placeholder="Columnas A" formControlName="matrizAColumnas">
+                      <label for="matrizAColumnas">Columnas Matriz A</label>
+                    </div>
+                  </div>
+                  
+                  <!-- Matriz B -->
+                  <div class="matriz-inputs">
+                    <div class="form-floating mb-2 contenedorTextbox">
+                      <input type="text" class="form-control" id="matrizBFilas" placeholder="Filas B" formControlName="matrizBFilas">
+                      <label for="matrizBFilas">Filas Matriz B</label>
+                    </div>
+                    <div class="form-floating mb-2 contenedorTextbox">
+                      <input type="text" class="form-control" id="matrizBColumnas" placeholder="Columnas B" formControlName="matrizBColumnas">
+                      <label for="matrizBColumnas">Columnas Matriz B</label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

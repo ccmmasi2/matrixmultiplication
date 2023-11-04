@@ -1,4 +1,4 @@
-export class inputList {
+export class InputCreate {
   IDProcess: number = 0;
   date: Date = new Date();
   status: string = '';

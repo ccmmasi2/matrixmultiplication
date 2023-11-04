@@ -99,8 +99,6 @@ export class CreateComponent implements OnInit {
           this.router.navigate(['']);
         }
         else{
-          console.log("loadProcessData");
-          console.log(process);
           this.fillValuesFromDB(process);
         }
       });
@@ -109,8 +107,8 @@ export class CreateComponent implements OnInit {
   fillValuesFromDB(process: ProcessPpal){
     this.matrixAForm.reset(process?.matrix[0]);
     this.matrixBForm.reset(process?.matrix[1]);
-    this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail);
-    this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail);
+    this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail, process?.matrix[0].matrixName);
+    this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail, process?.matrix[1].matrixName);
   }
 
   undoChanges() {
@@ -130,7 +128,7 @@ export class CreateComponent implements OnInit {
     return Array.from({ length: count }, (_, index) => index + 1);
   }
 
-  createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[]): number[][] {
+  createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[], name: string): number[][] {
     const matrix = [];
   
     for (let i = 1; i <= rows; i++) {

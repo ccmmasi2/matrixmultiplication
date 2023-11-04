@@ -3,6 +3,7 @@ using Matrix.Multiplication.AccessData.ObjectRepository.Interface;
 using Matrix.Multiplication.AccessData.Repository.Implementation;
 using Matrix.Multiplication.DTOObjects.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
 {
@@ -55,25 +56,16 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
         {
             ProcessPpal ProcessObject = null;
             List<ProcessMatrix> LProcessMatrixObject = null;
-            List<ProcessMatrixDetail> LProcessMatrixDetailObject = null;
 
             ProcessObject = (from ProcessPpal in _dbcontext.ProcessPpal
                              where ProcessPpal.ID == ID
                              select ProcessPpal).FirstOrDefault();
 
             LProcessMatrixObject = (from ProcessPpal in _dbcontext.ProcessPpal
-                                    join matrix in _dbcontext.ProcessMatrix on ProcessPpal.ID equals matrix.IDProcess
+                                    join matrix in _dbcontext.ProcessMatrix 
+                                        on ProcessPpal.ID equals matrix.IDProcess
                                     where ProcessPpal.ID == ID
                                     select matrix).ToList();
-
-            foreach (ProcessMatrix item in LProcessMatrixObject)
-            {
-                LProcessMatrixDetailObject = new List<ProcessMatrixDetail>();
-                LProcessMatrixDetailObject = (from matrix in _dbcontext.ProcessMatrix
-                                              join matrixDetail in _dbcontext.ProcessMatrixDetail on matrix.ID equals matrixDetail.IDProcessMatrix
-                                              where matrix.ID == item.ID
-                                              select matrixDetail).ToList();
-            }
 
             var result = new
             {
@@ -85,7 +77,9 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
                     matrixName = matrix.MatrixName,
                     rows = matrix.Rows,
                     columns = matrix.Columns,
-                    detail = LProcessMatrixDetailObject.Select(detail => new
+                    detail = GetMatrixDetailByIdMatrix(matrix.ID)
+                    .Where(x => x.IDProcessMatrix == matrix.ID)
+                    .Select(detail => new
                     {
                         row = detail.Row,
                         column = detail.Column,
@@ -95,6 +89,20 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
             };
 
             return result;
+        }
+
+        public List<ProcessMatrixDetail> GetMatrixDetailByIdMatrix(int IDMatrix)
+        {
+            List<ProcessMatrixDetail> LProcessMatrixDetailObject = null;
+
+            LProcessMatrixDetailObject = new List<ProcessMatrixDetail>();
+            LProcessMatrixDetailObject = (from matrix in _dbcontext.ProcessMatrix
+                                            join matrixDetail in _dbcontext.ProcessMatrixDetail
+                                            on matrix.ID equals matrixDetail.IDProcessMatrix
+                                            where matrix.ID == IDMatrix
+                                          select matrixDetail).ToList();
+
+            return LProcessMatrixDetailObject;
         }
     }
 }

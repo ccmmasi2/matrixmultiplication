@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { inputList } from '@app/models/inputList.model';
+import { EventService } from '@app/services/EventService';
 import { ApiService } from '@app/services/api-service';
 import { ActionsDialogComponent } from '@app/shared/components/actions-dialog/actions-dialog.component';
  
@@ -14,14 +15,19 @@ import { ActionsDialogComponent } from '@app/shared/components/actions-dialog/ac
 export class ListComponent implements OnInit {
   dataSource = new MatTableDataSource<inputList>([]);
   inputListOptions: inputList[] = [];
-  displayedColumns: string[] = ['id', 'date', 'matrixA', 'matrixB', 'status', 'action'];
+  displayedColumns: string[] = ['processId', 'date', 'matrixA', 'matrixB', 'status', 'action'];
 
   constructor(
     private router: Router,
     public apiService: ApiService,
     private dialog: MatDialog,
+    private eventService: EventService
   ){
     this.dataSource = new MatTableDataSource<inputList>([]);
+
+    this.eventService.watchButtonClick.subscribe((processId: number) => {
+      this.goToWatch(processId);
+    });
   }
 
   ngOnInit() {
@@ -48,16 +54,20 @@ export class ListComponent implements OnInit {
     this.router.navigate(['input/create']);
   }
   
-  openActionsDialog(event: MouseEvent, element: any) {
-    const inputList: inputList = element as inputList;
+  openActionsDialog(event: MouseEvent, row: any) {
+    const userObject: inputList = row as inputList;
     const offsetX = 120;
     const offsety = 20;
     this.dialog.open(ActionsDialogComponent, {
-      data: { user: inputList.IDProcess },
+      data: { processId: userObject.processId },
       position: {
         top: event.clientY - offsety + 'px',
         left: event.clientX - offsetX + 'px',
       },
     });
+  }
+
+  goToWatch(processId: number) {
+    this.router.navigate(['input/create/', processId]);
   }
 }

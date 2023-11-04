@@ -18,6 +18,6 @@ import { SharedModule } from '@app/shared/shared.module';
     ReactiveFormsModule,
     MaterialModule,
     SharedModule
-  ]
+  ],
 })
 export class InputModule { }

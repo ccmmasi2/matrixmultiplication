@@ -15,8 +15,6 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getListInputOptions(): Observable<inputList[]> {
-    console.log('this.baseUrl: ' + this.baseUrl);
-    
     return this.http.get<inputList[]>(`${this.baseUrl}/api/Process/GetInputList`);
   }
   

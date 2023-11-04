@@ -1,5 +1,5 @@
 export class InputCreate {
-  IDProcess: number = 0;
+  processId: number = 0;
   date: Date = new Date();
   status: string = '';
   dimensionA: string = '';

@@ -49,16 +49,16 @@ export class CreateComponent implements OnInit {
   
   loadProcess(): void {
     this.activateRoute.params.subscribe((params) => {
-      const IDProcess = +params['IDProcess'];
-      if (!isNaN(IDProcess)) {
-        this.loadProcessData(IDProcess);
+      const processId = +params['processId'];
+      if (!isNaN(processId)) {
+        this.loadProcessData(processId);
       }
     });
   }
   
-  loadProcessData(IDProcess: number): void {
+  loadProcessData(processId: number): void {
     this.activateRoute.params
-      .pipe(switchMap(() => this.apiService.getProcessById(IDProcess)))
+      .pipe(switchMap(() => this.apiService.getProcessById(processId)))
       .subscribe((process) => {
         if (!process) {
           this.router.navigate(['']);
@@ -72,7 +72,7 @@ export class CreateComponent implements OnInit {
     this.formSubmitted = true;
 
     if (this.matrixForm.valid) { 
-      if (!this.currentProcess.IDProcess) {
+      if (!this.currentProcess.processId) {
           this.apiService.addProcess(this.currentProcess).subscribe(
             (process) =>  {
               const message = `Los cambios han sido guardados.`;

@@ -18,8 +18,8 @@ import { Subject, switchMap } from 'rxjs';
 export class CreateComponent implements OnInit {
   public matrixAForm!: FormGroup;
   public matrixBForm!: FormGroup;
-  dataMatrixA!: number[][] | null;
-  dataMatrixB!: number[][] | null;
+  public dataMatrixA!: number[][] | null;
+  public dataMatrixB!: number[][] | null;
   process: InputCreate | undefined;
   formReadOnly: boolean = false;
   validResult: boolean = true;
@@ -57,26 +57,27 @@ export class CreateComponent implements OnInit {
     return process;
   }
   
-  onSubmit(event: Event): void {
-    // event.preventDefault();
-
-    // if (this.matrixAForm.valid) { 
-    //   if (!this.currentProcess.processId) {
-    //       this.apiService.addProcess(this.currentProcess).subscribe(
-    //         (process) =>  {
-    //           const message = `Los cambios han sido guardados.`;
-    //           this.formReadOnly = true;
-    //           },
-    //           (error) => {
-    //             console.error('Error:', error);
-    //             const mensaje = `Error creando el usuario.`;
-    //             this.formReadOnly = false;
-    //           }
-    //         );
-    //     this.hasUnsavedChanges = false;
-    //     this.ngOnInit();
-    //   }
-    // }
+  saveTransaction(){
+    if (this.matrixAForm.valid && this.matrixBForm.valid) {
+      const dataToSave = {
+        matrixA: this.matrixAForm.value,
+        matrixB: this.matrixBForm.value,
+        dataMatrixA: this.dataMatrixA, 
+        dataMatrixB: this.dataMatrixB,  
+      };
+      console.log(dataToSave);
+        // this.apiService.addProcess(this.currentProcess).subscribe(
+        // (process) =>  {
+        //   const message = `Los cambios han sido guardados.`;
+        //   this.formReadOnly = true;
+        //   },
+        //   (error) => {
+        //     console.error('Error:', error);
+        //     const mensaje = `Error creando el usuario.`;
+        //     this.formReadOnly = false;
+        //   }
+        // );
+    }
   }
 
   /* */

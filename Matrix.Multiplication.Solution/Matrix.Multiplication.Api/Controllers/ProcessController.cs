@@ -38,8 +38,7 @@ namespace Matrix.Multiplication.Api.Controllers
                 return BadRequest();
             }
 
-            var Item = await _repo.GetProcessById(id)
-                .ToListAsync();
+            var Item = _repo.GetProcessById(id);
 
             if (Item == null)
             {

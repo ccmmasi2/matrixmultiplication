@@ -3,7 +3,7 @@ using Matrix.Multiplication.DTOObjects.Models;
 
 namespace Matrix.Multiplication.AccessData.ObjectRepository.Interface
 {
-    public interface IProcessRepository : IRepository<ProcessPpal>
+    public interface IProcessPpalRepository : IRepository<ProcessPpal>
     {
         IQueryable<object> GetProcessAndMatrixInfo();
         ProcessPpal GetProcessById(int ID);

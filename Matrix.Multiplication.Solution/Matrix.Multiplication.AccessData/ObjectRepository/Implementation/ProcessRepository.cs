@@ -2,8 +2,6 @@
 using Matrix.Multiplication.AccessData.ObjectRepository.Interface;
 using Matrix.Multiplication.AccessData.Repository.Implementation;
 using Matrix.Multiplication.DTOObjects.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Diagnostics;
 
 namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
 {
@@ -51,63 +49,37 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
 
             return query.AsQueryable();
         }
-        public IQueryable<object> GetProcessById(int ID)
+
+        public ProcessPpal GetProcessById(int ID)
         {
-            var query = from process in _dbcontext.ProcessPpal
-                        join matrix in _dbcontext.ProcessMatrix on process.ID equals matrix.IDProcess
-                        join detail in _dbcontext.ProcessMatrixDetail on matrix.ID equals detail.IDProcessMatrix
-                        where process.ID == ID
-                        group detail by new { process.ID, process.Date, process.Status, matrix.MatrixName, matrix.Rows, matrix.Columns } into groupedDetails
-                        select new
-                        {
-                            processID = groupedDetails.Key.ID,
-                            processDate = groupedDetails.Key.Date,
-                            processStatus = groupedDetails.Key.Status,
-                            matrix = new
-                            {
-                                matrixName = groupedDetails.Key.MatrixName,
-                                rows = groupedDetails.Key.Rows,
-                                columns = groupedDetails.Key.Columns,
-                                detail = groupedDetails.Select(detailItem => new
-                                {
-                                    row = detailItem.Row,
-                                    column = detailItem.Column,
-                                    value = detailItem.Value
-                                }).ToList()
-                            }
-                        };
+            ProcessPpal Process = new ProcessPpal();
+            List<ProcessMatrix> LProcessMatrix = new List<ProcessMatrix>();
+            List<ProcessMatrixDetail> LProcessMatrixDetail = new List<ProcessMatrixDetail>();
 
-            return query.AsQueryable();
+            Process = (from ProcessPpal in _dbcontext.ProcessPpal
+                       where ProcessPpal.ID == ID
+                       select ProcessPpal).FirstOrDefault();
+
+            LProcessMatrix = (from ProcessPpal in _dbcontext.ProcessPpal
+                              join matrix in _dbcontext.ProcessMatrix on ProcessPpal.ID equals matrix.IDProcess
+                              where ProcessPpal.ID == ID
+                              select matrix).ToList();
+
+            foreach (ProcessMatrix item in LProcessMatrix)
+            {
+                LProcessMatrixDetail = new List<ProcessMatrixDetail>();
+                LProcessMatrixDetail = (from matrix in _dbcontext.ProcessMatrix
+                                        join matrixDetail in _dbcontext.ProcessMatrixDetail on matrix.ID equals matrixDetail.IDProcessMatrix
+                                        where matrix.ID == item.ID
+                                        select matrixDetail).ToList();
+
+                item.LProcessMatrixDetail = LProcessMatrixDetail;
+            }
+
+            Process.LProcessMatrix = LProcessMatrix;
+
+            return Process;
         }
-
-        //public IQueryable<object> GetProcessById(int ID)
-        //{
-        //    var query = from process in _dbcontext.Process
-        //                join matrix in _dbcontext.ProcessMatrix on process.ID equals matrix.IDProcess
-        //                join detail in _dbcontext.ProcessMatrixDetail on matrix.ID equals detail.IDProcessMatrix
-        //                where process.ID == ID
-        //                select new
-        //                {
-        //                    ProcessID = process.ID,
-        //                    ProcessDate = process.Date,
-        //                    ProcessStatus = process.Status,
-        //                    Matix = new
-        //                    {
-        //                        MatrixName = matrix.MatrixName,
-        //                        Rows = matrix.Rows,
-        //                        Columns = matrix.Columns,
-        //                        Detail = new
-        //                        {
-        //                            Row = detail.Row,
-        //                            Column = detail.Column,
-        //                            Value = detail.Value
-        //                        }
-        //                    }
-        //                };
-
-        //    var result = query.ToList();
-
-        //    return query.AsQueryable();
-        //}
+         
     }
 }

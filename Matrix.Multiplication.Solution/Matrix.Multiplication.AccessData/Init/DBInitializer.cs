@@ -35,12 +35,18 @@ namespace Matrix.Multiplication.AccessData.Init
                 _db.ProcessPpal.AddRange(LProcess);
             }
 
+            if (_db.ChangeTracker.HasChanges())
+                _db.SaveChanges();
+
             if (!_db.ProcessMatrix.Any())
             {
                 var LProcessMatrixDataJson = File.ReadAllText("../Matrix.Multiplication.AccessData/Data/SeedData/ProcessMatrix.json");
                 var LProcessMatrix = JsonSerializer.Deserialize<List<ProcessMatrix>>(LProcessMatrixDataJson);
                 _db.ProcessMatrix.AddRange(LProcessMatrix);
             }
+
+            if (_db.ChangeTracker.HasChanges())
+                _db.SaveChanges();
 
             if (!_db.ProcessMatrixDetail.Any())
             {

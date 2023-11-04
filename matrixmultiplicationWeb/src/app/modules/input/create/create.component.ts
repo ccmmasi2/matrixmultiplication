@@ -18,13 +18,10 @@ import { Subject, switchMap } from 'rxjs';
 export class CreateComponent implements OnInit {
   public matrixAForm!: FormGroup;
   public matrixBForm!: FormGroup;
-  dataMatrixA!: number[][];
-  dataMatrixB!: number[][];
+  dataMatrixA!: number[][] | null;
+  dataMatrixB!: number[][] | null;
   process: InputCreate | undefined;
-  formSubmitted: boolean = false;
-  hasUnsavedChanges: boolean = false;
   formReadOnly: boolean = false;
-  onSubmitSubject = new Subject<void>();
 
   constructor(
     public apiService: ApiService,
@@ -48,32 +45,36 @@ export class CreateComponent implements OnInit {
   } 
 
   /* */
-  get currentProcess(): InputCreate {
-    const process = this.matrixAForm.value as InputCreate;
+  get currentAProcess(): Matrix {
+    const process = this.matrixAForm.value as Matrix;
+    return process;
+  }
+
+  get currentBProcess(): Matrix {
+    const process = this.matrixBForm.value as Matrix;
     return process;
   }
   
   onSubmit(event: Event): void {
-    event.preventDefault();
-    this.formSubmitted = true;
+    // event.preventDefault();
 
-    if (this.matrixAForm.valid) { 
-      if (!this.currentProcess.processId) {
-          this.apiService.addProcess(this.currentProcess).subscribe(
-            (process) =>  {
-              const message = `Los cambios han sido guardados.`;
-              this.formReadOnly = true;
-              },
-              (error) => {
-                console.error('Error:', error);
-                const mensaje = `Error creando el usuario.`;
-                this.formReadOnly = false;
-              }
-            );
-        this.hasUnsavedChanges = false;
-        this.ngOnInit();
-      }
-    }
+    // if (this.matrixAForm.valid) { 
+    //   if (!this.currentProcess.processId) {
+    //       this.apiService.addProcess(this.currentProcess).subscribe(
+    //         (process) =>  {
+    //           const message = `Los cambios han sido guardados.`;
+    //           this.formReadOnly = true;
+    //           },
+    //           (error) => {
+    //             console.error('Error:', error);
+    //             const mensaje = `Error creando el usuario.`;
+    //             this.formReadOnly = false;
+    //           }
+    //         );
+    //     this.hasUnsavedChanges = false;
+    //     this.ngOnInit();
+    //   }
+    // }
   }
 
   /* */
@@ -107,17 +108,15 @@ export class CreateComponent implements OnInit {
   fillValuesFromDB(process: ProcessPpal){
     this.matrixAForm.reset(process?.matrix[0]);
     this.matrixBForm.reset(process?.matrix[1]);
-    this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail, process?.matrix[0].matrixName);
-    this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail, process?.matrix[1].matrixName);
+    this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail);
+    this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail);
   }
 
   undoChanges() {
     this.matrixAForm.reset();
     this.matrixBForm.reset();
-  }
-
-  detectUnsavedChanges() {
-    this.hasUnsavedChanges = true;
+    this.dataMatrixA = null;
+    this.dataMatrixB = null;
   }
 
   handleEditClick(): void {
@@ -128,25 +127,33 @@ export class CreateComponent implements OnInit {
     return Array.from({ length: count }, (_, index) => index + 1);
   }
 
-  createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[], name: string): number[][] {
+  createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[] | null): number[][] {
     const matrix = [];
   
     for (let i = 1; i <= rows; i++) {
       const fila = [];
   
       for (let j = 1; j <= columns; j++) {
-        const elemento = matrixDetail.find((detail) => detail.row === i && detail.column === j);
-  
-        if (elemento) {
-          fila.push(elemento.value);
-        } else {
-          fila.push(0);  
+        let elemento = 0;
+        if(matrixDetail){
+            elemento = matrixDetail.find((detail) => detail.row === i && detail.column === j)!.value;
         }
+        fila.push(elemento);
       }
   
       matrix.push(fila);
     }
   
     return matrix;
+  }
+
+  generateTables(){
+    if (this.matrixAForm.valid && this.matrixBForm.valid) { 
+      this.dataMatrixA = this.createMatrix(this.currentAProcess.rows, this.currentAProcess.columns, null);
+      this.dataMatrixB = this.createMatrix(this.currentBProcess.rows, this.currentBProcess.columns, null);
+    }
+    else {
+      this.undoChanges();
+    }
   }
 }

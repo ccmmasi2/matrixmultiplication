@@ -17,8 +17,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Matrix.Multiplication.DTOObjects\Matrix.Multiplication.DTOObjects.csproj" />
   </ItemGroup>
-
-    <ItemGroup>
-	    <Folder Include="Data\SeedData\" />
-    </ItemGroup>
 </Project>

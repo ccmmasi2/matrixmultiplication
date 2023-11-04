@@ -24,31 +24,30 @@ namespace Matrix.Multiplication.Api.Controllers
         {
             _logger.LogInformation("Get list");
             var LItems = await _repo.GetProcessAndMatrixInfo()
-                .ToListAsync(); ;
+                .ToListAsync(); 
             return Ok(LItems);
         }
 
-        //[HttpGet("{id}", Name = "GetCategory")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public async Task<ActionResult<Category>> GetById(int id)
-        //{
-        //    if (id == 0)
-        //    {
-        //        _logger.LogError("Must send the ID!");
-        //        return BadRequest();
-        //    }
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<object>> GetById(int id)
+        {
+            if (id == 0)
+            {
+                _logger.LogError("Must send the ID!");
+                return BadRequest();
+            }
 
-        //    var Item = await _repo.GetOne(e => e.ID == id);
+            var Item = await _repo.GetProcessById(id)
+                .ToListAsync();
 
-        //    if (Item == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (Item == null)
+            {
+                return NotFound();
+            }
 
-        //    return Ok(Item);
-        //}
+            return Ok(Item);
+        }
 
         //[HttpGet("ByName/{name}", Name = "GetCategoryByName")]
         //[ProducesResponseType(StatusCodes.Status200OK)]

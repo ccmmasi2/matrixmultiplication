@@ -28,11 +28,11 @@ namespace Matrix.Multiplication.AccessData.Init
                 throw;
             }
 
-            if (!_db.Process.Any())
+            if (!_db.ProcessPpal.Any())
             {
-                var LProcessDataJson = File.ReadAllText("../Matrix.Multiplication.AccessData/Data/SeedData/Process.json");
-                var LProcess = JsonSerializer.Deserialize<List<Process>>(LProcessDataJson);
-                _db.Process.AddRange(LProcess);
+                var LProcessDataJson = File.ReadAllText("../Matrix.Multiplication.AccessData/Data/SeedData/ProcessPpal.json");
+                var LProcess = JsonSerializer.Deserialize<List<ProcessPpal>>(LProcessDataJson);
+                _db.ProcessPpal.AddRange(LProcess);
             }
 
             if (!_db.ProcessMatrix.Any())

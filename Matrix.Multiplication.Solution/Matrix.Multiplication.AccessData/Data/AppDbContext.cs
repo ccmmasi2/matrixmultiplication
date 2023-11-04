@@ -9,7 +9,7 @@ namespace Matrix.Multiplication.AccessData.Data
         public AppDbContext(DbContextOptions options) : base(options)
         { }
 
-        public DbSet<Process> Process { get; set; }
+        public DbSet<ProcessPpal> ProcessPpal { get; set; }
         public DbSet<ProcessMatrix> ProcessMatrix { get; set; }
         public DbSet<ProcessMatrixDetail> ProcessMatrixDetail { get; set; }
 

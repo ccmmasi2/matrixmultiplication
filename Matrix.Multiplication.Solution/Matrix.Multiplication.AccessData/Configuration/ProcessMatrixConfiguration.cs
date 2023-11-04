@@ -14,7 +14,7 @@ namespace Matrix.Multiplication.AccessData.Configuration
             builder.Property(c => c.Rows).IsRequired();
             builder.Property(c => c.Columns).IsRequired();
 
-            builder.HasOne(e => e.Process).WithMany().HasForeignKey(e => e.IDProcess);
+            builder.HasOne(e => e.ProcessPpal).WithMany().HasForeignKey(e => e.IDProcess);
         }
     }
 }

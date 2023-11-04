@@ -11,7 +11,7 @@ namespace Matrix.Multiplication.DTOObjects.Models
 
         public int IDProcess { get; set; }
         [ForeignKey("IDProcess")]
-        public Process Process { get; set; }
+        public ProcessPpal ProcessPpal { get; set; }
 
 
         [Required(ErrorMessage = "Required field")]

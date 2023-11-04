@@ -7,7 +7,7 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Process",
+                name: "ProcessPpal",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -38,7 +38,7 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
                     table.ForeignKey(
                         name: "FK_ProcessMatrix_Process",
                         column: x => x.IDProcess,
-                        principalTable: "Process",
+                        principalTable: "ProcessPpal",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -86,7 +86,7 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
                 name: "ProcessMatrix");
 
             migrationBuilder.DropTable(
-                name: "Process");
+                name: "ProcessPpal");
         }
     }
 }

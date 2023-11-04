@@ -4,9 +4,9 @@ using Matrix.Multiplication.DTOObjects.Models;
 
 namespace Matrix.Multiplication.AccessData.Configuration
 {
-    public class ProcessConfiguration : IEntityTypeConfiguration<Process>
+    public class ProcessConfiguration : IEntityTypeConfiguration<ProcessPpal>
     {
-        public void Configure(EntityTypeBuilder<Process> builder)
+        public void Configure(EntityTypeBuilder<ProcessPpal> builder)
         {
             builder.Property(c => c.ID).IsRequired();
             builder.Property(c => c.Date).IsRequired();

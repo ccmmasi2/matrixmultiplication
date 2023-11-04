@@ -16,7 +16,7 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Matrix.Multiplication.DTOObjects.Models.Process", b =>
+            modelBuilder.Entity("Matrix.Multiplication.DTOObjects.Models.ProcessPpal", b =>
             {
                 b.Property<int>("ID")
                     .ValueGeneratedOnAdd()
@@ -34,7 +34,7 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
 
                 b.HasKey("ID");
 
-                b.ToTable("Process");
+                b.ToTable("ProcessPpal");
             });
 
             modelBuilder.Entity("Matrix.Multiplication.DTOObjects.Models.ProcessMatrix", b =>

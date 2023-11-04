@@ -2,7 +2,7 @@
 
 namespace Matrix.Multiplication.DTOObjects.Models
 {
-    public class Process
+    public class ProcessPpal
     {
         [Key]
         public int ID { get; set; }

@@ -18,8 +18,10 @@ import { Subject, switchMap } from 'rxjs';
 export class ViewComponent implements OnInit {
   public matrixAForm!: FormGroup;
   public matrixBForm!: FormGroup;
+  public matrixCForm!: FormGroup;
   dataMatrixA!: number[][] | null;
   dataMatrixB!: number[][] | null;
+  dataMatrixC!: number[][] | null;
   validResult: boolean = true;
   isDisabled: boolean = true;
   
@@ -35,25 +37,18 @@ export class ViewComponent implements OnInit {
 
   buildForm() {
     this.matrixAForm = this.formBuilder.group({
-      rows: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
-      columns: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
+      rows: [null],
+      columns: [null],
     });
     this.matrixBForm = this.formBuilder.group({
-      rows: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
-      columns: [null, [Validators.required, Validators.min(1), Validators.max(5), ]],
+      rows: [null],
+      columns: [null],
     }); 
-  } 
-
-  /* */
-  get currentAProcess(): Matrix {
-    const process = this.matrixAForm.value as Matrix;
-    return process;
-  }
-
-  get currentBProcess(): Matrix {
-    const process = this.matrixBForm.value as Matrix;
-    return process;
-  }
+    this.matrixCForm = this.formBuilder.group({
+      rows: [null],
+      columns: [null],
+    }); 
+  }  
 
   ngOnInit(): void {
     this.loadProcess();
@@ -82,11 +77,13 @@ export class ViewComponent implements OnInit {
   }
 
   fillValuesFromDB(process: ProcessPpal){
+    this.validResult = process.processStatus;
     this.matrixAForm.reset(process?.matrix[0]);
     this.matrixBForm.reset(process?.matrix[1]);
+    this.matrixCForm.reset(process?.matrix[2]);
     this.dataMatrixA = this.createMatrix(process?.matrix[0].rows, process?.matrix[0].columns, process?.matrix[0].detail);
     this.dataMatrixB = this.createMatrix(process?.matrix[1].rows, process?.matrix[1].columns, process?.matrix[1].detail);
-    this.validResult = process.processStatus;
+    this.dataMatrixC = this.createMatrix(process?.matrix[2].rows, process?.matrix[2].columns, process?.matrix[2].detail);
   } 
 
   createMatrix(rows: number, columns: number, matrixDetail: MatrixDetail[] | null): number[][] {

@@ -57,6 +57,7 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
         {
             ProcessPpal ProcessObject = null;
             List<ProcessMatrix> LProcessMatrixObject = null;
+            ProcessMatrix ProcessMatrixResultObject = null;
 
             ProcessObject = (from ProcessPpal in _dbcontext.ProcessPpal
                              where ProcessPpal.ID == ID
@@ -65,8 +66,19 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
             LProcessMatrixObject = (from ProcessPpal in _dbcontext.ProcessPpal
                                     join matrix in _dbcontext.ProcessMatrix 
                                         on ProcessPpal.ID equals matrix.IDProcess
-                                    where ProcessPpal.ID == ID
+                                    where ProcessPpal.ID == ID && matrix.Tipo == "Entrante"
                                     select matrix).ToList();
+
+            ProcessMatrixResultObject = (from ProcessPpal in _dbcontext.ProcessPpal
+                                    join matrix in _dbcontext.ProcessMatrix
+                                        on ProcessPpal.ID equals matrix.IDProcess
+                                    where ProcessPpal.ID == ID && matrix.Tipo == "Resultante"
+                                         select matrix).FirstOrDefault();
+
+            if (ProcessMatrixResultObject != null)
+            {
+                LProcessMatrixObject.Add(ProcessMatrixResultObject);
+            }
 
             var result = new
             {

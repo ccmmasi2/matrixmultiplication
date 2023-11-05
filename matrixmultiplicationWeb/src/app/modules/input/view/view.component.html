@@ -68,22 +68,22 @@
         </div>
       </div> 
       <br>
-      <div class="infoMatrixB">
+      <div class="infoMatrixC">
         <h2>Matriz C</h2>
         <div class="infoMatrix">
-          <form class="grid" [formGroup]="matrixBForm">
+          <form class="grid" [formGroup]="matrixCForm">
             <div class="rowsInfo">
-              Filas:<input type="text" class="form-control" id="matrixBRows" placeholder="rows B" formControlName="rows" appNumericInput>
+              Filas:<input type="text" class="form-control" id="matrixCRows" placeholder="rows C" formControlName="rows" appNumericInput>
             </div>
             <div class="columnsInfo">
-              Columnas:<input type="text" class="form-control" id="matrixBColumns" placeholder="Columns B" formControlName="columns" appNumericInput>
+              Columnas:<input type="text" class="form-control" id="matrixCColumns" placeholder="Columns C" formControlName="columns" appNumericInput>
             </div>
           </form>
           <div class="detail">
             <table>
-              <tr *ngFor="let row of dataMatrixB">
+              <tr *ngFor="let row of dataMatrixC">
                 <td *ngFor="let cell of row">
-                  <input type="text" class="cellValue" id="matrixBCell" [ngModel]="cell" [ngModelOptions]="{standalone: true}">
+                  <input type="text" class="cellValueResult" id="matrixCCell" [ngModel]="cell" [ngModelOptions]="{standalone: true}">
                 </td>
               </tr>
             </table>

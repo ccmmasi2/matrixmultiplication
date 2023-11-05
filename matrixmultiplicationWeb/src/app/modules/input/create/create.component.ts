@@ -61,10 +61,12 @@ export class CreateComponent {
         let processToSave = this.createObjectToSave(this.matrixAForm.value, this.matrixBForm.value, this.dataMatrixA!, this.dataMatrixB!);
         this.apiService.addProcess(processToSave).subscribe(
         (process) =>  {
+            this.undoChanges();
             alert('Los cambios han sido guardados.');
             this.router.navigate(['input/view', process]);
           },
           (error) => {
+            this.undoChanges();
             console.error('Error:', error);
             const mensaje = `Error creando el usuario.`;
           }

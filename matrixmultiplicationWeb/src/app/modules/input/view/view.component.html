@@ -7,12 +7,14 @@
     ></app-bread-crumb>
   </div> 
 </div> 
-<br>
-<div class="buttonContainer"> 
+<p>Puede validar el resultado de las matrices en esta pagina: 
+  <a href="https://es.onlinemschool.com/math/assistance/matrix/multiply/" title="Este vinculo fue tomado de internet, allí puede ingresar los valores generados por esta aplicación y validar si funcionó correctamente o no">Validar mi matriz</a> 
+</p>
+<div> 
   <button
     (click)="redirectCreate()"
     class="button button-default-primary">
-    nuevo
+    Ir a crear un nuevo proceso
   </button>
 </div>
 <div *ngIf="!validResult" class="contain-title">  

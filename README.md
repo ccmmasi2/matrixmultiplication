@@ -1,5 +1,3 @@
-este proyecto 
-
 1 - 
 descargue el código de el siguiente enlace
 https://github.com/ccmmasi2/matrixmultiplication.git

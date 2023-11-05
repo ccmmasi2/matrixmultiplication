@@ -15,8 +15,13 @@ namespace Matrix.Multiplication.DTOObjects.Models
 
 
         [Required(ErrorMessage = "Required field")]
-        [MaxLength(50, ErrorMessage = "The length of the field should be less than 50")]
+        [MaxLength(1, ErrorMessage = "The length of the field should be less than 1")]
         public string MatrixName { get; set; }
+
+
+        [Required(ErrorMessage = "Required field")]
+        [MaxLength(10, ErrorMessage = "The length of the field should be less than 10")]
+        public string Tipo { get; set; }
 
 
         [Required(ErrorMessage = "Required field")]

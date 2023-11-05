@@ -28,7 +28,8 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IDProcess = table.Column<int>(type: "int", nullable: false),
-                    MatrixName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    MatrixName = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
+                    Tipo = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Rows = table.Column<int>(type: "int", nullable: false),
                     Columns = table.Column<int>(type: "int", nullable: false)
                 },

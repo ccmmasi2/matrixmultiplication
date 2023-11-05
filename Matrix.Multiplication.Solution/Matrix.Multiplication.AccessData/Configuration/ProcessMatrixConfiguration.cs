@@ -11,6 +11,7 @@ namespace Matrix.Multiplication.AccessData.Configuration
             builder.Property(c => c.ID).IsRequired();
             builder.Property(c => c.IDProcess).IsRequired();
             builder.Property(c => c.MatrixName).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.Tipo).IsRequired().HasMaxLength(50);
             builder.Property(c => c.Rows).IsRequired();
             builder.Property(c => c.Columns).IsRequired();
 

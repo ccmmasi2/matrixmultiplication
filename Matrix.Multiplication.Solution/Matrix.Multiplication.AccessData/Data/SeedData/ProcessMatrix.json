@@ -2,36 +2,42 @@
   {
     "IDProcess": 1,
     "MatrixName": "A",
+    "Tipo": "Entrante",
     "Rows": 3,
     "Columns": 3
   },
   {
     "IDProcess": 1,
     "MatrixName": "B",
+    "Tipo": "Entrante",
     "Rows": 3,
     "Columns": 3
   },
   {
     "IDProcess": 2,
     "MatrixName": "A",
+    "Tipo": "Entrante",
     "Rows": 5,
     "Columns": 3
   },
   {
     "IDProcess": 2,
     "MatrixName": "B",
+    "Tipo": "Entrante",
     "Rows": 3,
     "Columns": 4
   },
   {
     "IDProcess": 3,
     "MatrixName": "A",
+    "Tipo": "Entrante",
     "Rows": 5,
     "Columns": 3
   },
   {
     "IDProcess": 3,
     "MatrixName": "B",
+    "Tipo": "Entrante",
     "Rows": 2,
     "Columns": 2
   }

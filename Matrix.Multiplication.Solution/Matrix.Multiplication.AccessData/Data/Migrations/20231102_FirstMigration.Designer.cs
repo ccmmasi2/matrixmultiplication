@@ -16,6 +16,7 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+
             modelBuilder.Entity("Matrix.Multiplication.DTOObjects.Models.ProcessPpal", b =>
             {
                 b.Property<int>("ID")
@@ -37,6 +38,7 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
                 b.ToTable("ProcessPpal");
             });
 
+
             modelBuilder.Entity("Matrix.Multiplication.DTOObjects.Models.ProcessMatrix", b =>
             {
                 b.Property<int>("ID")
@@ -51,8 +53,13 @@ namespace Matrix.Multiplication.AccessData.Data.Migrations
 
                 b.Property<string>("MatrixName")
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnType("nvarchar(50)");
+                    .HasMaxLength(1)
+                    .HasColumnType("nvarchar(1)");
+
+                b.Property<string>("Tipo")
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .HasColumnType("nvarchar(10)");
 
                 b.Property<int>("Rows")
                     .IsRequired()

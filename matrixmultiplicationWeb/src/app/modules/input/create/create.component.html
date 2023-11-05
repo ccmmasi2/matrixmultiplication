@@ -7,6 +7,9 @@
     ></app-bread-crumb>
   </div> 
 </div> 
+<div *ngIf="!validResult" class="contain-title">  
+  Esta definición de filas y columnas no permite crear una multiplicación de matrices. Si continúa se creará en estado inválido
+</div>
 <div class="basic-container">
     <div class="contain-main">
       <div class="contain-body">
@@ -50,13 +53,12 @@
             <div class="detail">
               <table>
                 <tr *ngFor="let row of dataMatrixB; let i = index">
-                  <td *ngFor="let cell of row; let j = index">
-                    <label>asdf</label>
+                  <td *ngFor="let cell of row; let j = index"> 
                     <input 
                       type="text" 
                       class="cellValue" 
-                      id="matrixBCell_{{i}}_{{j}}" 
-                      [(ngModel)]="dataMatrixB![i][j]">
+                      id="matrixACell_{{i}}_{{j}}" 
+                      [(ngModel)]="dataMatrixB![i][j]"> 
                   </td>
                 </tr>
               </table>
@@ -78,8 +80,5 @@
       class="button button-default-primary">
       Generar multiplicación de tablas y/o Guardar en bd
     </button>
-  </div>
-  <div *ngIf="!validResult" class="contain-title">  
-    Esta definición de filas y columnas no permite crear una multiplicación de matrices. Si continúa se creará en estado inválido
   </div>
   

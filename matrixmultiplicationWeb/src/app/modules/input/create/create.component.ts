@@ -15,12 +15,11 @@ import { Subject, switchMap } from 'rxjs';
   styleUrls: ['./create.component.css'],
 })
 
-export class CreateComponent implements OnInit {
+export class CreateComponent {
   public matrixAForm!: FormGroup;
   public matrixBForm!: FormGroup;
   public dataMatrixA!: number[][] | null;
   public dataMatrixB!: number[][] | null;
-  process: InputCreate | undefined;
   validResult: boolean = true;
   showInsertButton: boolean = false; 
 
@@ -56,50 +55,49 @@ export class CreateComponent implements OnInit {
   }
   
   saveTransaction(){
-    if (this.matrixAForm.valid && this.matrixBForm.valid) {
-      let processToSave = this.createObjectToSave(this.matrixAForm.value, this.matrixBForm.value, this.dataMatrixA!, this.dataMatrixB!);
-      this.apiService.addProcess(processToSave).subscribe(
-      (process) =>  {
-          this.ngOnInit();
-          alert('Los cambios han sido guardados.');
-        },
-        (error) => {
-          console.error('Error:', error);
-          const mensaje = `Error creando el usuario.`;
-        }
-      );
-    }
-  }
-
-  ngOnInit(): void {
-    this.loadProcess();
-  } 
-  
-  loadProcess(): void {
-    this.activateRoute.params.subscribe((params) => {
-      const processId = +params['id'];
-      if (!isNaN(processId)) {
-        this.loadProcessData(processId);
+    let validateRowsObject:boolean = this.validateRows();
+    if(validateRowsObject) {
+      if (this.matrixAForm.valid && this.matrixBForm.valid) {
+        let processToSave = this.createObjectToSave(this.matrixAForm.value, this.matrixBForm.value, this.dataMatrixA!, this.dataMatrixB!);
+        this.apiService.addProcess(processToSave).subscribe(
+        (process) =>  {
+            this.undoChanges();
+            alert('Los cambios han sido guardados.');
+          },
+          (error) => {
+            console.error('Error:', error);
+            const mensaje = `Error creando el usuario.`;
+          }
+        );
       }
-    });
-  }
-  
-  loadProcessData(processId: number): void {
-    this.activateRoute.params
-      .pipe(switchMap(() => this.apiService.getProcessById(processId)))
-      .subscribe((process) => {
-        if (!process) {
-          this.router.navigate(['']);
-        }
-        else{
-          this.fillValuesFromDB(process);
-        }
-      });
-  }
+    }
+    else {
+      alert('La matriz tiene valores cero. deben ser valores mayores a cero');
+    }
+  }  
 
-  fillValuesFromDB(process: ProcessPpal){
-    this.matrixAForm.reset(process?.matrix[0]);
-    this.matrixBForm.reset(process?.matrix[1]);
+  validateRows(): boolean {
+    if (this.dataMatrixA !== null) {
+      for (let i = 0; i < this.dataMatrixA.length; i++) {
+        for (let j = 0; j < this.dataMatrixA[i].length; j++) {
+          if (this.dataMatrixA[i][j] === 0) {
+            return false;
+          }
+        }
+      }
+    }
+
+    if (this.dataMatrixB !== null) {
+      for (let i = 0; i < this.dataMatrixB.length; i++) {
+        for (let j = 0; j < this.dataMatrixB[i].length; j++) {
+          if (this.dataMatrixB[i][j] === 0) {
+            return false;
+          }
+        }
+      }
+    }
+
+    return true;
   }
 
   undoChanges() {
@@ -107,10 +105,8 @@ export class CreateComponent implements OnInit {
     this.matrixBForm.reset();
     this.dataMatrixA = null;
     this.dataMatrixB = null;
-  }
-
-  getRange(count: number): number[] {
-    return Array.from({ length: count }, (_, index) => index + 1);
+    this.validResult = true;
+    this.showInsertButton = false; 
   }
 
   createMatrix(rows: number, columns: number): number[][] {
@@ -120,13 +116,17 @@ export class CreateComponent implements OnInit {
       const fila = [];
   
       for (let j = 0; j < columns; j++) {
-        fila.push(0);
+        fila.push(this.generateRandomNumber());
       }
   
       matrix.push(fila);
     }
   
     return matrix;
+  }
+
+  generateRandomNumber() {
+    return Math.floor(Math.random() * 10) + 1;
   }
 
   generateTables(){

@@ -61,8 +61,10 @@ export class CreateComponent {
         let processToSave = this.createObjectToSave(this.matrixAForm.value, this.matrixBForm.value, this.dataMatrixA!, this.dataMatrixB!);
         this.apiService.addProcess(processToSave).subscribe(
         (process) =>  {
-            this.undoChanges();
             alert('Los cambios han sido guardados.');
+            setTimeout(() => {
+              this.router.navigate(['input/view', process]);
+            }, 3000);
           },
           (error) => {
             console.error('Error:', error);

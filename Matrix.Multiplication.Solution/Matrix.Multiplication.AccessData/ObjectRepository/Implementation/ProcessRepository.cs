@@ -19,6 +19,7 @@ namespace Matrix.Multiplication.AccessData.ObjectRepository.Implementation
         public IQueryable<object> GetProcessAndMatrixInfo()
         {
             var query = from matrix in _dbcontext.ProcessMatrix
+                        where matrix.Tipo == "Entrante"
                         group matrix by matrix.IDProcess into grouped
                         select new
                         {

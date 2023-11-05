@@ -17,8 +17,6 @@ export class HeaderComponent {
       this.router.navigate(['']);
     } else if (selectedValue === '2') {
       this.router.navigate(['/input/list']);
-    } else if (selectedValue === '3') {
-      this.router.navigate(['/home']);
     }
   }
 }

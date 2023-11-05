@@ -62,9 +62,7 @@ export class CreateComponent {
         this.apiService.addProcess(processToSave).subscribe(
         (process) =>  {
             alert('Los cambios han sido guardados.');
-            setTimeout(() => {
-              this.router.navigate(['input/view', process]);
-            }, 3000);
+            this.router.navigate(['input/view', process]);
           },
           (error) => {
             console.error('Error:', error);

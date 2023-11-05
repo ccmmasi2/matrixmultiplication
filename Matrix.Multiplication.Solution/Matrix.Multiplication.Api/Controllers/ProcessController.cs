@@ -75,9 +75,7 @@ namespace Matrix.Multiplication.Api.Controllers
                         objectMatrixDetailIn.Row = matrixDetail.Row;
                         objectMatrixDetailIn.Column = matrixDetail.Column;
                         objectMatrixDetailIn.Value = matrixDetail.Value;
-
-                        _processMatrixDetailRepository.Insert(objectMatrixDetailIn);
-                        _processMatrixDetailRepository.SaveChanges();
+                        _processMatrixDetailRepository.InsertSink(objectMatrixDetailIn, entity => entity.ID);
                     }
                 }
 

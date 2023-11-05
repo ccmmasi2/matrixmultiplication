@@ -108,4 +108,8 @@ export class ViewComponent implements OnInit {
   
     return matrix;
   }
+
+  redirectCreate(): void {
+    this.router.navigate(['input/create']);
+  }
 }

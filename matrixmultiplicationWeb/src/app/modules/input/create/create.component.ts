@@ -21,9 +21,8 @@ export class CreateComponent implements OnInit {
   public dataMatrixA!: number[][] | null;
   public dataMatrixB!: number[][] | null;
   process: InputCreate | undefined;
-  formReadOnly: boolean = false;
   validResult: boolean = true;
-  showInsertButton: boolean = false;
+  showInsertButton: boolean = false; 
 
   constructor(
     public apiService: ApiService,
@@ -61,13 +60,12 @@ export class CreateComponent implements OnInit {
       let processToSave = this.createObjectToSave(this.matrixAForm.value, this.matrixBForm.value, this.dataMatrixA!, this.dataMatrixB!);
       this.apiService.addProcess(processToSave).subscribe(
       (process) =>  {
-        const message = `Los cambios han sido guardados.`;
-        this.formReadOnly = true;
+          this.ngOnInit();
+          alert('Los cambios han sido guardados.');
         },
         (error) => {
           console.error('Error:', error);
           const mensaje = `Error creando el usuario.`;
-          this.formReadOnly = false;
         }
       );
     }
@@ -109,10 +107,6 @@ export class CreateComponent implements OnInit {
     this.matrixBForm.reset();
     this.dataMatrixA = null;
     this.dataMatrixB = null;
-  }
-
-  handleEditClick(): void {
-    this.formReadOnly = false;
   }
 
   getRange(count: number): number[] {

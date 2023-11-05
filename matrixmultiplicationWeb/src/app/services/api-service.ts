@@ -27,7 +27,7 @@ export class ApiService {
       );
   }
 
-  addProcess(inputCreate: ProcessPpal): Observable<number> {
+  addProcess(inputCreate: ProcessPpal): Observable<string> {
     const url = `${this.baseUrl}/api/Process`;  
 
     const httpOptions = {
@@ -35,12 +35,12 @@ export class ApiService {
     };
 
     return this.http
-      .post<number>(url, inputCreate, httpOptions)
+      .post<string>(url, inputCreate, httpOptions)
       .pipe(
         map((response) => response),
         catchError((error) => {
           console.error('Error:', error);
-          return of(0); 
+          return of('Error al agregar el proceso: ' + error.message); 
         })
       );
   }

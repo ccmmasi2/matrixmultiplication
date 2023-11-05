@@ -22,7 +22,7 @@ import { ViewComponent } from './view/view.component';
     ReactiveFormsModule,
     MaterialModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ],
 })
 export class InputModule { }
